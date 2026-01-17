@@ -1,6 +1,6 @@
-# 🎓 CSE Lab Activities - MIT
+# 🎓 CSE Lab Activities - Manipal Institute of Technology
 
-A comprehensive collection of my Computer Science Engineering (CSE) lab work, assignments, and practice files throughout my undergraduate journey at MIT.
+A comprehensive collection of my Computer Science Engineering (CSE) lab work, assignments, and practice files throughout my undergraduate journey at Manipal Institute of Technology (MIT), Manipal.
 
 > 📚 **Status:** Currently in Semester 2 | Will be updated through all 8 semesters
 
