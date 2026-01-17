@@ -21,7 +21,7 @@ CSE_mit_lab/
 │
 ├── SEM2/                    # Semester 2 (Ongoing)
 │   ├── dv_lab/              # Data Visualization Lab
-│   │   └── lessons/         # Chapter-wise lessons & notebooks
+│   │   └── lessons/         # Weekly lessons (week1.ipynb, week2.ipynb)
 │   └── oops_lab/            # Object Oriented Programming Lab
 │
 ├── SEM3/                    # (Coming Soon)
@@ -62,12 +62,21 @@ CSE_mit_lab/
 
 | Folder | Description | Language/Tools |
 |--------|-------------|----------------|
-| `dv_lab/` | Data Visualization Lab | Python, Matplotlib, Jupyter |
+| `dv_lab/lessons/` | Data Visualization Lab - Weekly lessons | Python, Jupyter Notebook |
 | `oops_lab/` | Object Oriented Programming Lab | TBD |
 
+#### Data Visualization Lab Content
+
+| Notebook | Topics Covered |
+|----------|----------------|
+| `week1.ipynb` | Basic I/O, Arithmetic operations, Prime number check, Even/Odd numbers, Functions, String operations |
+| `week2.ipynb` | Lists (operations, min/max, sum, avg, count), Tuples (immutability), Dictionaries (Cricket World Cup winners analysis) |
+
 **Topics Being Covered:**
-- Data Visualization with Python
-- Matplotlib & Plotting
+- Python Fundamentals (Variables, Data Types, Functions)
+- Data Structures (Lists, Tuples, Dictionaries, Sets)
+- Data Analysis & Manipulation
+- Data Visualization with Matplotlib (Upcoming)
 - Object Oriented Programming concepts
 
 ---
@@ -116,7 +125,7 @@ jupyter notebook
 | Semester | Status | Completion |
 |----------|--------|------------|
 | SEM 1 | ✅ Completed | 100% |
-| SEM 2 | 🔄 In Progress | ~10% |
+| SEM 2 | 🔄 In Progress | ~15% |
 | SEM 3 | ⏳ Upcoming | - |
 | SEM 4 | ⏳ Upcoming | - |
 | SEM 5 | ⏳ Upcoming | - |
