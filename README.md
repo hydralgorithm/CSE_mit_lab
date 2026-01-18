@@ -22,7 +22,8 @@ CSE_mit_lab/
 ├── SEM2/                    # Semester 2 (Ongoing)
 │   ├── dv_lab/              # Data Visualization Lab
 │   │   └── lessons/         # Weekly lessons (week1.ipynb, week2.ipynb)
-│   └── oops_lab/            # Object Oriented Programming Lab
+│   └── oops_lab/            # Object Oriented Programming Lab (Java)
+│       └── weekly_exerc/    # Weekly exercises (Java project)
 │
 ├── SEM3/                    # (Coming Soon)
 ├── SEM4/                    # (Coming Soon)
@@ -63,21 +64,28 @@ CSE_mit_lab/
 | Folder | Description | Language/Tools |
 |--------|-------------|----------------|
 | `dv_lab/lessons/` | Data Visualization Lab - Weekly lessons | Python, Jupyter Notebook |
-| `oops_lab/` | Object Oriented Programming Lab | TBD |
+| `oops_lab/weekly_exerc/` | Object Oriented Programming Lab - Weekly exercises | Java |
 
 #### Data Visualization Lab Content
 
 | Notebook | Topics Covered |
 |----------|----------------|
-| `week1.ipynb` | Basic I/O, Arithmetic operations, Prime number check, Even/Odd numbers, Functions, String operations |
-| `week2.ipynb` | Lists (operations, min/max, sum, avg, count), Tuples (immutability), Dictionaries (Cricket World Cup winners analysis) |
+| `week1.ipynb` | Basic I/O, Arithmetic operations, Prime number check, Even/Odd numbers, Functions, String operations (vowel/consonant count) |
+| `week2.ipynb` | Lists (min/max, sum, avg, count), Tuples (immutability), Dictionaries (World Cup winners, word frequency), Sets (union, intersection, difference) |
+
+#### OOP Lab Content
+
+| Folder | Description |
+|--------|-------------|
+| `weekly_exerc/src/` | Java source files for weekly exercises |
+| `weekly_exerc/lib/` | External dependencies/libraries |
 
 **Topics Being Covered:**
 - Python Fundamentals (Variables, Data Types, Functions)
 - Data Structures (Lists, Tuples, Dictionaries, Sets)
 - Data Analysis & Manipulation
 - Data Visualization with Matplotlib (Upcoming)
-- Object Oriented Programming concepts
+- Object Oriented Programming in Java (Classes, Objects, Inheritance, Polymorphism)
 
 ---
 
@@ -86,7 +94,7 @@ CSE_mit_lab/
 | Semester | Languages/Tools |
 |----------|-----------------|
 | SEM 1 | C |
-| SEM 2 | Python, Jupyter Notebook |
+| SEM 2 | Python, Jupyter Notebook, Java |
 | SEM 3-8 | To be updated |
 
 ---
@@ -118,6 +126,18 @@ python filename.py
 jupyter notebook
 ```
 
+### For Java Programs (SEM2 - OOP Lab)
+```bash
+# Navigate to project folder
+cd SEM2/oops_lab/weekly_exerc
+
+# Compile
+javac -d bin src/App.java
+
+# Run
+java -cp bin App
+```
+
 ---
 
 ## 📊 Progress Tracker
@@ -125,7 +145,7 @@ jupyter notebook
 | Semester | Status | Completion |
 |----------|--------|------------|
 | SEM 1 | ✅ Completed | 100% |
-| SEM 2 | 🔄 In Progress | ~15% |
+| SEM 2 | 🔄 In Progress | ~20% |
 | SEM 3 | ⏳ Upcoming | - |
 | SEM 4 | ⏳ Upcoming | - |
 | SEM 5 | ⏳ Upcoming | - |
