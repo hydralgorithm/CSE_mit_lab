@@ -20,7 +20,7 @@ public class lesson1_1 {
             totalPay = regularPay + overTimePay;
         }
 
-        System.out.printf("Your total salary is: Rs%.2f",totalPay);
+        System.out.printf("Your total salary is: Rs%.2f\n",totalPay);
 
         input.close();
     }
