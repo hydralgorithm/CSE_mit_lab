@@ -72,6 +72,7 @@ CSE_mit_lab/
 |----------|----------------|
 | `week1.ipynb` | Basic I/O, Arithmetic operations, Prime number check, Even/Odd numbers, Functions, String operations (vowel/consonant count) |
 | `week2.ipynb` | Lists (min/max, sum, avg, count), Tuples (immutability), Dictionaries (World Cup winners, word frequency), Sets (union, intersection, difference) |
+| `week3.ipynb` | NumPy arrays (random generation, reshaping), Statistical functions (mean, median, std), Matrix operations (addition, subtraction, multiplication, transpose, determinant, inverse) |
 
 #### OOP Lab Content
 
