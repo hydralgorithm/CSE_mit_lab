@@ -2,7 +2,7 @@
 
 A comprehensive collection of my Computer Science Engineering (CSE) lab work, assignments, and practice files throughout my undergraduate journey at Manipal Institute of Technology (MIT), Bengaluru.
 
-> 📚 **Status:** Currently in Semester 2 | Will be updated through all 8 semesters
+> 📚 **Status:** Currently in Semester 2 (~25%) | Will be updated through all 8 semesters
 
 ---
 
@@ -21,9 +21,13 @@ CSE_mit_lab/
 │
 ├── SEM2/                    # Semester 2 (Ongoing)
 │   ├── dv_lab/              # Data Visualization Lab
-│   │   └── lessons/         # Weekly lessons (week1.ipynb, week2.ipynb)
+│   │   ├── lessons/         # Weekly lessons (week1.ipynb - week4.ipynb)
+│   │   └── venv/            # Python virtual environment
 │   └── oops_lab/            # Object Oriented Programming Lab (Java)
 │       └── weekly_exerc/    # Weekly exercises (Java project)
+│           ├── src/         # Java source files
+│           ├── lib/         # External dependencies/libraries
+│           └── README.md    # Project-specific notes
 │
 ├── SEM3/                    # (Coming Soon)
 ├── SEM4/                    # (Coming Soon)
@@ -73,13 +77,15 @@ CSE_mit_lab/
 | `week1.ipynb` | Basic I/O, Arithmetic operations, Prime number check, Even/Odd numbers, Functions, String operations (vowel/consonant count) |
 | `week2.ipynb` | Lists (min/max, sum, avg, count), Tuples (immutability), Dictionaries (World Cup winners, word frequency), Sets (union, intersection, difference) |
 | `week3.ipynb` | NumPy arrays (random generation, reshaping), Statistical functions (mean, median, std), Matrix operations (addition, subtraction, multiplication, transpose, determinant, inverse) |
+| `week4.ipynb` | Pandas Series (creation, indexing), Descriptive stats (mean, min, max), Filtering by condition, Unit conversion (°C to °F), Threshold checks |
 
 #### OOP Lab Content
 
 | Folder | Description |
 |--------|-------------|
-| `weekly_exerc/src/` | Java source files for weekly exercises |
+| `weekly_exerc/src/` | Java source files for weekly exercises (lesson1_1.java - lesson1_4.java, plus compiled .class files) |
 | `weekly_exerc/lib/` | External dependencies/libraries |
+| `weekly_exerc/README.md` | Project instructions/notes |
 
 **Topics Being Covered:**
 - Python Fundamentals (Variables, Data Types, Functions)
@@ -146,7 +152,7 @@ java -cp bin App
 | Semester | Status | Completion |
 |----------|--------|------------|
 | SEM 1 | ✅ Completed | 100% |
-| SEM 2 | 🔄 In Progress | ~20% |
+| SEM 2 | 🔄 In Progress | ~25% |
 | SEM 3 | ⏳ Upcoming | - |
 | SEM 4 | ⏳ Upcoming | - |
 | SEM 5 | ⏳ Upcoming | - |
