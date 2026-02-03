@@ -1,32 +1,58 @@
+// import java.util.Scanner;
+
+// public class lesson1_2 {
+//     public static void main(String[] args) {
+//         Scanner input = new Scanner(System.in);
+
+//         System.out.print("Enter first number: ");
+//         int a = input.nextInt();
+//         System.out.print("Enter second number: ");
+//         int b = input.nextInt();
+
+//         while (b != 0) {
+//             int carry = a & b; // Find bits that both have 1s (the carries)
+//             a = a ^ b;         // Add bits where at least one is 0 (sum without carry)
+//             b = carry << 1;    // Shift carry to the left to add it in the next loop
+//         }
+
+//         int sum = a; // 'a' now holds the final sum
+//         System.out.println("The sum is: " + sum);
+        
+//         if ((sum & 1) == 0) {
+//             System.out.println(sum + " is an EVEN number.");
+//         } else {
+//             System.out.println(sum + " is an ODD number.");
+//         }
+
+//         input.close();
+//     }
+// }
+
 import java.util.Scanner;
 
-public class lesson1_2 {
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
+public class lesson1_2{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter first number: ");
-        int a = input.nextInt();
-        System.out.print("Enter second number: ");
-        int b = input.nextInt();
+        System.out.printf("Enter num1: ");
+        int num1 = sc.nextInt();
+        System.out.printf("\nEnter num2: ");
+        int num2 = sc.nextInt();
 
-        while (b != 0) {
-            int carry = a & b; // Find bits that both have 1s (the carries)
-            a = a ^ b;         // Add bits where at least one is 0 (sum without carry)
-            b = carry << 1;    // Shift carry to the left to add it in the next loop
+        while (num2 != 0) {
+            int sum = num1 ^ num2;
+            int carr = (num1 & num2) << 1;
+            num1 = sum;
+            num2 = carr;
         }
 
-        int sum = a; // 'a' now holds the final sum
-        System.out.println("The sum is: " + sum);
-        
-        if ((sum & 1) == 0) {
-            System.out.println(sum + " is an EVEN number.");
+        System.out.println("Sum is "+num1);
+        if ((num1 & 1) == 0){
+            System.out.println(num1 + " is even!");
         } else {
-            System.out.println(sum + " is an ODD number.");
+            System.out.println(num1 + " is odd!");
         }
-
-        input.close();
+        
     }
 }
-
-
 
