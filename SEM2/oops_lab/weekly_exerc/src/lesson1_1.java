@@ -1,27 +1,21 @@
 import java.util.Scanner;
 
 public class lesson1_1 {
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Enter hours worked: ");
-        double hours = input.nextDouble();
-        System.out.println("Enter hourly rate: ");
-        double rate = input.nextDouble();
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        System.out.printf("Enter hours worked: ");
+        double hours = sc.nextDouble();
+        System.out.printf("\nEnter hourly rate: ");
+        double rate = sc.nextDouble();
 
         double totalPay = 0;
-
-        if(hours<=40){
-            totalPay = rate * hours;
-        } else {
-            double regularPay = 40 * rate;
-            double extraHours = hours - 40;
-            double overTimePay = extraHours * rate * 1.5;
-            
-            totalPay = regularPay + overTimePay;
+        if (hours<=40){
+            totalPay = hours * rate;
+        } else if (hours>40) {
+            totalPay = (40*rate) + (1.5 * rate * (hours - 40));
         }
 
-        System.out.printf("Your total salary is: Rs%.2f\n",totalPay);
-
-        input.close();
+        System.out.printf("\nYour total salary is: Rs%.2f",totalPay);
+        sc.close();
     }
 }
