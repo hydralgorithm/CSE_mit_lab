@@ -77,7 +77,7 @@ CSE_mit_lab/
 | `week1.ipynb` | Basic I/O, Arithmetic operations, Prime number check, Even/Odd numbers, Functions, String operations (vowel/consonant count) |
 | `week2.ipynb` | Lists (min/max, sum, avg, count), Tuples (immutability), Dictionaries (World Cup winners, word frequency), Sets (union, intersection, difference) |
 | `week3.ipynb` | NumPy arrays (random generation, reshaping), Statistical functions (mean, median, std), Matrix operations (addition, subtraction, multiplication, transpose, determinant, inverse) |
-| `week4.ipynb` | Pandas Series (creation, indexing), Descriptive stats (mean, min, max), Filtering by condition, Unit conversion (°C to °F), Threshold checks |
+| `week4.ipynb` | **Pandas Series:** Temperature data analysis, descriptive stats (mean, min, max), filtering by condition, unit conversion (°C to °F), threshold checks. **Pandas DataFrame:** Student records (10 students with Roll Number, Name, Gender, Marks1-3), total marks calculation, finding min/max/avg marks, identifying highest average student, counting failed students |
 
 #### OOP Lab Content
 
