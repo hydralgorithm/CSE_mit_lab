@@ -2,7 +2,7 @@
 
 A comprehensive collection of my Computer Science Engineering (CSE) lab work, assignments, and practice files throughout my undergraduate journey at Manipal Institute of Technology (MIT), Bengaluru.
 
-> 📚 **Status:** Currently in Semester 2 (~25%) | Will be updated through all 8 semesters
+> 📚 **Status:** Currently in Semester 2 (~35%) | Will be updated through all 8 semesters
 
 ---
 
@@ -21,13 +21,16 @@ CSE_mit_lab/
 │
 ├── SEM2/                    # Semester 2 (Ongoing)
 │   ├── dv_lab/              # Data Visualization Lab
-│   │   ├── lessons/         # Weekly lessons (week1.ipynb - week4.ipynb)
-│   │   └── venv/            # Python virtual environment
-│   └── oops_lab/            # Object Oriented Programming Lab (Java)
-│       └── weekly_exerc/    # Weekly exercises (Java project)
-│           ├── src/         # Java source files
-│           ├── lib/         # External dependencies/libraries
-│           └── README.md    # Project-specific notes
+│   │   ├── lessons/         # Weekly lessons (week1-5.ipynb)
+│   │   ├── questions/       # Lab manual and assignment PDFs
+│   │   └── .venv/           # Python virtual environment (Python 3.12.0)
+│   ├── oops_lab/            # Object Oriented Programming Lab (Java)
+│   │   ├── weekly_exerc/    # Weekly exercises (Java project)
+│   │   │   ├── src/         # Java source files
+│   │   │   ├── lib/         # External dependencies/libraries
+│   │   │   └── README.md    # Project-specific notes
+│   │   └── questions/       # OOP Lab manual and assignments
+│   └── emergency/           # Emergency practice files
 │
 ├── SEM3/                    # (Coming Soon)
 ├── SEM4/                    # (Coming Soon)
@@ -74,10 +77,11 @@ CSE_mit_lab/
 
 | Notebook | Topics Covered |
 |----------|----------------|
-| `week1.ipynb` | Basic I/O, Arithmetic operations, Prime number check, Even/Odd numbers, Functions, String operations (vowel/consonant count) |
-| `week2.ipynb` | Lists (min/max, sum, avg, count), Tuples (immutability), Dictionaries (World Cup winners, word frequency), Sets (union, intersection, difference) |
-| `week3.ipynb` | NumPy arrays (random generation, reshaping), Statistical functions (mean, median, std), Matrix operations (addition, subtraction, multiplication, transpose, determinant, inverse) |
+| `week1.ipynb` | **Python Basics:** Basic I/O, Arithmetic operations, Prime number check, Even/Odd numbers, Functions, String operations (vowel/consonant count) |
+| `week2.ipynb` | **Python Data Structures:** Lists (min/max, sum, avg, count), Tuples (immutability), Dictionaries (World Cup winners, word frequency), Sets (union, intersection, difference) |
+| `week3.ipynb` | **NumPy Basics:** Arrays (random generation, reshaping), Statistical functions (mean, median, std), Matrix operations (addition, subtraction, multiplication, transpose, determinant, inverse) |
 | `week4.ipynb` | **Pandas Series:** Temperature data analysis, descriptive stats (mean, min, max), filtering by condition, unit conversion (°C to °F), threshold checks. **Pandas DataFrame:** Student records (10 students with Roll Number, Name, Gender, Marks1-3), total marks calculation, finding min/max/avg marks, identifying highest average student, counting failed students |
+| `week5.ipynb` | **Advanced Pandas Series:** Temperature time series analysis, statistical operations (mean, max, min), conditional filtering, temperature conversions, identifying above-average days |
 
 #### OOP Lab Content
 
@@ -88,9 +92,10 @@ CSE_mit_lab/
 | `weekly_exerc/README.md` | Project instructions/notes |
 
 **Topics Being Covered:**
-- Python Fundamentals (Variables, Data Types, Functions)
+- Python Fundamentals (Variables, Data Types, Functions, Control Structures)
 - Data Structures (Lists, Tuples, Dictionaries, Sets)
-- Data Analysis & Manipulation
+- NumPy for Numerical Computing (Arrays, Matrix Operations, Statistics)
+- Pandas for Data Analysis (Series, DataFrames, Data Manipulation)
 - Data Visualization with Matplotlib (Upcoming)
 - Object Oriented Programming in Java (Classes, Objects, Inheritance, Polymorphism)
 
@@ -98,11 +103,11 @@ CSE_mit_lab/
 
 ## 🛠️ Technologies Used
 
-| Semester | Languages/Tools |
-|----------|-----------------|
-| SEM 1 | C |
-| SEM 2 | Python, Jupyter Notebook, Java |
-| SEM 3-8 | To be updated |
+| Semester | Languages/Tools | Environment |
+|----------|-----------------|-------------|
+| SEM 1 | C | GCC Compiler |
+| SEM 2 | Python (NumPy, Pandas), Java | Python 3.12.0, JupyterLab |
+| SEM 3-8 | To be updated | - |
 
 ---
 
@@ -122,9 +127,12 @@ gcc filename.c -o output
 # Navigate to folder
 cd SEM2/dv_lab
 
-# Activate virtual environment
-.\venv\Scripts\activate  # Windows
-source venv/bin/activate  # Linux/Mac
+# Activate virtual environment (Python 3.12.0)
+source .venv/bin/activate  # Linux/Mac
+.venv\Scripts\activate     # Windows
+
+# Install required packages (if not already installed)
+pip install numpy pandas matplotlib
 
 # Run Python file
 python filename.py
@@ -152,7 +160,7 @@ java -cp bin App
 | Semester | Status | Completion |
 |----------|--------|------------|
 | SEM 1 | ✅ Completed | 100% |
-| SEM 2 | 🔄 In Progress | ~25% |
+| SEM 2 | 🔄 In Progress | ~35% |
 | SEM 3 | ⏳ Upcoming | - |
 | SEM 4 | ⏳ Upcoming | - |
 | SEM 5 | ⏳ Upcoming | - |
