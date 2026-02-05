@@ -1,0 +1,188 @@
+import java.util.Scanner;
+
+class STUDENT {
+    String sname;
+    int marks[] = new int[5];
+    int total;
+    double avg;
+
+    void assign(String name, int m[]) {
+        sname = name;
+        marks = m;
+    }
+
+    void compute() {
+        total = 0;
+        for (int i = 0; i < 5; i++) {
+            total += marks[i];
+        }
+        avg = (double) total / 5;
+    }
+
+    void display() {
+        System.out.println("\nStudent Name: " + sname);
+        System.out.println("Total Marks: " + total);
+        System.out.println("Average Marks: " + avg);
+    }
+}
+
+public class lesson3_1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        STUDENT s = new STUDENT();
+
+        System.out.print("Enter student name: ");
+        String name = sc.next();
+
+        int m[] = new int[5];
+        System.out.println("Enter marks of 5 subjects: ");
+        for (int i = 0; i < 5; i++) {
+            m[i] = sc.nextInt();
+        }
+
+        s.assign(name, m);
+        s.compute();
+        s.display();
+    }
+}
+
+
+import java.util.Scanner;
+
+class EMPLOYEE {
+    String ename;
+    int eid;
+    double basic, da, it, net;
+
+    void input() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Employee Name: ");
+        ename = sc.next();
+        System.out.print("Enter Employee ID: ");
+        eid = sc.nextInt();
+        System.out.print("Enter Basic Salary: ");
+        basic = sc.nextDouble();
+    }
+
+    void calculate() {
+        da = 0.52 * basic;
+        double gross = basic + da;
+        it = 0.30 * gross;
+        net = gross - it;
+    }
+
+    void display() {
+        System.out.println("\nEmployee Name: " + ename);
+        System.out.println("Employee ID: " + eid);
+        System.out.println("Net salary: " + net);
+    }
+}
+
+public class lesson3_2 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of employees: ");
+        int n = sc.nextInt();
+
+        EMPLOYEE emp[] = new EMPLOYEE[n];
+        for (int i = 0; i < n; i++) {
+            emp[i] = new EMPLOYEE();
+            emp[i].input();
+            emp[i].calculate();
+            emp[i].display();
+        }
+    }
+}
+
+
+
+import java.util.Scanner;
+
+class Mixer {
+    int arr[];
+    int n;
+
+    void accept() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of elements: ");
+        n = sc.nextInt();
+        arr = new int[n];
+        System.out.println("Enter elements: ");
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+    }
+
+    Mixer mix(Mixer m) {
+        Mixer res = new Mixer();
+        res.n = this.n + m.n;
+        res.arr = new int[res.n];
+
+        int i = 0, j = 0, k = 0;
+        while (i < this.n && j < m.n) {
+            if (this.arr[i] < m.arr[j]) {
+                res.arr[k++] = this.arr[i++];
+            } else {
+                res.arr[k++] = m.arr[j++];
+            }
+        }
+        while (i < this.n) res.arr[k++] = this.arr[i++];
+        while (j < m.n) res.arr[k++] = m.arr[j++];
+
+        return res;
+    }
+
+    void display() {
+        for (int i = 0; i < n; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+}
+
+public class lesson3_3 {
+    public static void main(String[] args) {
+        Mixer m1 = new Mixer();
+        Mixer m2 = new Mixer();
+
+        System.out.println("Enter first array: ");
+        m1.accept();
+        System.out.println("Enter second array: ");
+        m2.accept();
+
+        Mixer m3 = m1.mix(m2);
+        System.out.println("\nMerged Array: ");
+        m3.display();
+    }
+}
+
+
+import java.util.Random;
+
+class Die {
+    int sideUp;
+
+    void roll() {
+        Random r = new Random();
+        // Generates random number between 1 and 6
+        sideUp = r.nextInt(6) + 1;
+    }
+
+    int getSideUp() {
+        return sideUp;
+    }
+}
+
+public class lesson3_4 {
+    public static void main(String[] args) {
+        Die d1 = new Die();
+        Die d2 = new Die();
+
+        d1.roll();
+        d2.roll();
+
+        System.out.println("die 1 value: " + d1.getSideUp());
+        System.out.println("die 2 value: " + d2.getSideUp());
+        System.out.println("Sum of dice: " + (d1.getSideUp() + d2.getSideUp()));
+    }
+}
