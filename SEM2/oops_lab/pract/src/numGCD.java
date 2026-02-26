@@ -17,5 +17,6 @@ public class numGCD {
         b= sc.nextInt();
         int gcd = findGCD(a, b);
         System.out.println(gcd);
+        sc.close();
     }
 }
