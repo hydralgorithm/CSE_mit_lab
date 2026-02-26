@@ -10,5 +10,6 @@ public class naturalSum {
             sum += i;
         }
         System.out.println("Sum: "+sum);
+        sc.close();
     }    
 }
