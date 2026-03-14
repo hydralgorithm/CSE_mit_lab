@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 class Matrix{
     private int[][] arr;
     
@@ -10,7 +12,9 @@ class Matrix{
         int col = a[0].length;
         this.arr = new int[row][col];
         for(int i=0; i< row;i++){
-            System.arraycopy(a[i],0,arr[i],0);
+            for(int j=0; j< col; j++){
+                this.arr[i][j] = a[i][j]; 
+            }
         }
     }
 
@@ -23,11 +27,18 @@ class Matrix{
         }
     }
 
-    
 
 
 }
 
 public class twoDArr {
-
+    public static void main(String args[]){
+        Scanner sc =new Scanner(System.in);
+        Matrix m1 = new Matrix(2,3);
+        int[][] arr = {{2,3,4},{3,4,1},{4,5,2}};
+        Matrix m2 = new Matrix(arr);
+        m1.display();
+        m2.display();
+        sc.close();
+    }
 }
