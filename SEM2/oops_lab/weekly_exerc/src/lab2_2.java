@@ -12,6 +12,6 @@ public class lab2_2 {
         String y = n.substring(0, 2);
         int year = 2000 + Integer.parseInt(y);
         System.out.println("Year of joining: " + year);
-        
+        sc.close();
     }
 }
