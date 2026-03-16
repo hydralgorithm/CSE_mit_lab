@@ -23,7 +23,7 @@ public class lab1_3 {
         int choice = sc.nextInt();
         System.out.print("Enter number of steps to rotate: ");
         int k = sc.nextInt();
-
+        sc.close();
         if(choice == 1){
             k = k % arr.length;
             arrRotate(arr, k);
