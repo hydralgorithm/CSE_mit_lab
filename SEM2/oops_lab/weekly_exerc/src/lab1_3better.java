@@ -30,6 +30,7 @@ public class lab1_3better {
         dir = Character.toUpperCase(dir);
         System.out.print("Enter number of steps to rotate array: ");
         int k = sc.nextInt();
+        sc.close();
 
         System.out.println("Original array: ");
         printArr(arr);
