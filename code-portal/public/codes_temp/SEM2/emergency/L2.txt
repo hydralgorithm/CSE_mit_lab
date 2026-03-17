@@ -1,0 +1,128 @@
+import java.util.Scanner;
+
+public class lesson2_1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int km;
+        double bill = 0;
+        
+        System.out.print("Enter distance travelled (km): ");
+        km = sc.nextInt();
+
+        if (km <= 5) {
+            bill = km * 10;
+        } else if (km <= 20) {
+            bill = (5 * 10) + (km - 5) * 8;
+        } else {
+            bill = (5 * 10) + (15 * 8) + (km - 20) * 5;
+        }
+
+        System.out.println("Total Fare = INR " + bill);
+    }
+}
+
+import java.util.Scanner;
+
+public class lesson2_2 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        // Part A: Registration Year
+        System.out.print("Enter 9-digit registration number: ");
+        String reg = sc.next();
+        String yearPart = reg.substring(0, 2);
+        System.out.println("Year of Joining: 20" + yearPart);
+
+        // Part B: Retirement Year
+        System.out.print("Enter birth year: ");
+        int birthYear = sc.nextInt();
+        int retirementYear = birthYear + 60;
+        System.out.println("Retirement Year: " + retirementYear);
+    }
+}
+
+import java.util.Scanner;
+
+public class lesson2_4 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n, sum = 0;
+        
+        System.out.print("Enter matrix size: ");
+        n = sc.nextInt();
+        int a[][] = new int[n][n];
+
+        System.out.println("Enter matrix elements: ");
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                a[i][j] = sc.nextInt();
+            }
+        }
+
+        System.out.println("Non-Principal Diagonal elements: ");
+        for (int i = 0; i < n; i++) {
+            // Logic for secondary diagonal: row i, column (n-1-i)
+            int j = n - 1 - i;
+            System.out.print(a[i][j] + " ");
+            sum += a[i][j];
+        }
+        
+        System.out.println("\nsum = " + sum);
+    }
+}
+
+import java.util.Scanner;
+
+public class lesson2_5 {
+    static int Fact(int n) {
+        if (n == 0) {
+            return 1;
+        } else {
+            return (n * Fact(n - 1));
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int num = sc.nextInt();
+        
+        System.out.println("Factorial = " + Fact(num));
+    }
+}
+
+
+import java.util.Scanner;
+
+public class lesson2_6 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int totalUnits = 0;
+        
+        System.out.println("Enter daily consumption for 7 days: ");
+        for (int i = 0; i < 7; i++) {
+            totalUnits += sc.nextInt();
+        }
+
+        double bill = 0;
+        int tier = totalUnits / 100;
+
+        switch (tier) {
+            case 0:
+                bill = totalUnits * 7;
+                break;
+            case 1:
+                bill = totalUnits * 8;
+                break;
+            case 2:
+                bill = totalUnits * 10;
+                break;
+            default:
+                bill = totalUnits * 12;
+                break;
+        }
+
+        System.out.println("Total Units = " + totalUnits);
+        System.out.println("Electricity Bill = INR " + bill);
+    }
+}

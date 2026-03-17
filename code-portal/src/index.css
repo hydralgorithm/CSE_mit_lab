@@ -1,0 +1,35 @@
+:root {
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --bg: #0f172a;
+  --panel-bg: #1e293b;
+  --tree-bg: #0f172a;
+  --input-bg: #020617;
+  --hover-bg: #334155;
+  --selected-bg: #3b82f6;
+  --border: #334155;
+  --code-bg: #020617;
+  --code-text: #e2e8f0;
+  --font-sans: 'Inter', system-ui, -apple-system, Tahoma, sans-serif;
+
+  font-family: var(--font-sans);
+  color: var(--text);
+  background: linear-gradient(135deg, #020617, #0f172a);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}

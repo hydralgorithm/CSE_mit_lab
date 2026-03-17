@@ -1,0 +1,154 @@
+import java.util.Scanner;
+
+class Salcalc {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.println("Enter hours worked: ");
+        int hours = sc.nextInt();
+        
+        System.out.println("Enter hourly salary: ");
+        double rate = sc.nextDouble();
+        
+        double salary;
+        
+        if (hours <= 40) {
+            salary = hours * rate;
+        } else {
+            salary = 40 * rate + (hours - 40) * (rate * 1.5);
+        }
+        
+        System.out.println("Total salary: " + salary);
+    }
+}
+
+import java.util.Scanner;
+
+public class lesson1_2 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.print("Enter num1: ");
+        int num1 = sc.nextInt();
+        
+        System.out.print("\nEnter num2: ");
+        int num2 = sc.nextInt();
+        
+        while (num2 != 0) {
+            int sum = num1 ^ num2;
+            int carr = (num1 & num2) << 1;
+            num1 = sum;
+            num2 = carr;
+        }
+        
+        System.out.println("Sum is " + num1);
+        
+        if ((num1 & 1) == 0) {
+            System.out.println(num1 + " is even");
+        } else {
+            System.out.println(num1 + " is odd");
+        }
+    }
+}
+
+import java.util.Scanner;
+
+public class lesson1_3 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.print("Enter array size: ");
+        int n = sc.nextInt();
+        int arr[] = new int[n];
+        
+        System.out.println("Enter array elements: ");
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        
+        System.out.print("Enter number of steps: ");
+        int k = sc.nextInt();
+        
+        System.out.print("Enter direction (L/R): ");
+        char dir = sc.next().charAt(0);
+        
+        k = k % n;
+        
+        if (dir == 'L' || dir == 'l') {
+            for (int i = 0; i < k; i++) {
+                int first = arr[0];
+                for (int j = 0; j < n - 1; j++) {
+                    arr[j] = arr[j + 1];
+                }
+                arr[n - 1] = first;
+            }
+        } else if (dir == 'R' || dir == 'r') {
+            for (int i = 0; i < k; i++) {
+                int last = arr[n - 1];
+                for (int j = n - 1; j > 0; j--) {
+                    arr[j] = arr[j - 1];
+                }
+                arr[0] = last;
+            }
+        }
+        
+        System.out.println("Rotated Array: ");
+        for (int i = 0; i < n; i++) {
+            System.out.print(arr[i] + " ");
+        }
+    }
+}
+
+
+import java.util.Scanner;
+
+public class lesson1_4 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.print("Enter number of products: ");
+        int n = sc.nextInt();
+        
+        String productName[] = new String[n];
+        double productPrice[] = new double[n];
+        int productQty[] = new int[n];
+        
+        for (int i = 0; i < n; i++) {
+            System.out.println("\nEnter product details: ");
+            System.out.print("Product Name: ");
+            productName[i] = sc.next();
+            System.out.print("Product price: ");
+            productPrice[i] = sc.nextDouble();
+            System.out.print("Available quantity: ");
+            productQty[i] = sc.nextInt();
+        }
+        
+        double totalBill = 0;
+        char choice;
+        
+        do {
+            System.out.println("\nAvailable Products: ");
+            for (int i = 0; i < n; i++) {
+                System.out.println(i + " - " + productName[i] + " Price: " + productPrice[i] + " Stock: " + productQty[i]);
+            }
+            
+            System.out.print("\nEnter product number to purchase: ");
+            int pNum = sc.nextInt();
+            System.out.print("Enter quantity to purchase: ");
+            int qty = sc.nextInt();
+            
+            if (pNum < n && productQty[pNum] >= qty) {
+                totalBill += productPrice[pNum] * qty;
+                productQty[pNum] -= qty;
+                System.out.println("Added to cart!");
+            } else {
+                System.out.println("Invalid product or out of stock!");
+            }
+            
+            System.out.print("\nDo you want to purchase more items? (Y/N): ");
+            choice = sc.next().charAt(0);
+        } while (choice == 'Y' || choice == 'y');
+        
+        System.out.println("\nTotal Bill Amount = Rs " + totalBill);
+    }
+}

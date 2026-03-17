@@ -1,0 +1,188 @@
+# 🎓 CSE Lab Activities - Manipal Institute of Technology
+
+A comprehensive collection of my Computer Science Engineering (CSE) lab work, assignments, and practice files throughout my undergraduate journey at Manipal Institute of Technology (MIT), Bengaluru.
+
+> 📚 **Status:** Currently in Semester 2 (~35%) | Will be updated through all 8 semesters
+
+---
+
+## 📁 Repository Structure
+
+```
+CSE_mit_lab/
+├── SEM1/                    # Semester 1 - C Programming
+│   ├── labExps/             # Lab experiments (exp1.c - exp48.c)
+│   ├── labMidTermPractice/  # Mid-term practice problems
+│   ├── endSemPrep/          # End semester preparation
+│   │   ├── general/         # General practice problems
+│   │   └── lab/             # Lab-specific practice
+│   ├── endSemLabPractice/   # End semester lab practice
+│   └── Assignments/         # Course assignments
+│
+├── SEM2/                    # Semester 2 (Ongoing)
+│   ├── dv_lab/              # Data Visualization Lab
+│   │   ├── lessons/         # Weekly lessons (week1-5.ipynb)
+│   │   ├── questions/       # Lab manual and assignment PDFs
+│   │   └── .venv/           # Python virtual environment (Python 3.12.0)
+│   ├── oops_lab/            # Object Oriented Programming Lab (Java)
+│   │   ├── weekly_exerc/    # Weekly exercises (Java project)
+│   │   │   ├── src/         # Java source files
+│   │   │   ├── lib/         # External dependencies/libraries
+│   │   │   └── README.md    # Project-specific notes
+│   │   └── questions/       # OOP Lab manual and assignments
+│   └── emergency/           # Emergency practice files
+│
+├── SEM3/                    # (Coming Soon)
+├── SEM4/                    # (Coming Soon)
+├── SEM5/                    # (Coming Soon)
+├── SEM6/                    # (Coming Soon)
+├── SEM7/                    # (Coming Soon)
+└── SEM8/                    # (Coming Soon)
+```
+
+---
+
+## 📖 Semester Details
+
+### Semester 1 - Fundamentals of Programming (C Language)
+
+| Folder | Description | Files |
+|--------|-------------|-------|
+| `labExps/` | Weekly lab experiments covering C basics to advanced topics | 48 programs |
+| `labMidTermPractice/` | Practice problems for mid-term lab exam | 29 programs |
+| `endSemPrep/general/` | General C programming practice | 20 programs |
+| `endSemPrep/lab/` | Lab-focused end semester preparation | 47 programs |
+| `endSemLabPractice/` | Final lab exam practice | 43 programs |
+| `Assignments/` | Course assignments | Various |
+
+**Topics Covered:**
+- Basic I/O, Data Types, Operators
+- Control Structures (if-else, loops)
+- Functions and Recursion
+- Arrays and Strings
+- Pointers
+- Structures and Unions
+- File Handling
+
+---
+
+### Semester 2 - Data Visualization & OOP (Ongoing)
+
+| Folder | Description | Language/Tools |
+|--------|-------------|----------------|
+| `dv_lab/lessons/` | Data Visualization Lab - Weekly lessons | Python, Jupyter Notebook |
+| `oops_lab/weekly_exerc/` | Object Oriented Programming Lab - Weekly exercises | Java |
+
+#### Data Visualization Lab Content
+
+| Notebook | Topics Covered |
+|----------|----------------|
+| `week1.ipynb` | **Python Basics:** Basic I/O, Arithmetic operations, Prime number check, Even/Odd numbers, Functions, String operations (vowel/consonant count) |
+| `week2.ipynb` | **Python Data Structures:** Lists (min/max, sum, avg, count), Tuples (immutability), Dictionaries (World Cup winners, word frequency), Sets (union, intersection, difference) |
+| `week3.ipynb` | **NumPy Basics:** Arrays (random generation, reshaping), Statistical functions (mean, median, std), Matrix operations (addition, subtraction, multiplication, transpose, determinant, inverse) |
+| `week4.ipynb` | **Pandas Series:** Temperature data analysis, descriptive stats (mean, min, max), filtering by condition, unit conversion (°C to °F), threshold checks. **Pandas DataFrame:** Student records (10 students with Roll Number, Name, Gender, Marks1-3), total marks calculation, finding min/max/avg marks, identifying highest average student, counting failed students |
+| `week5.ipynb` | **Advanced Pandas Series:** Temperature time series analysis, statistical operations (mean, max, min), conditional filtering, temperature conversions, identifying above-average days |
+
+#### OOP Lab Content
+
+| Folder | Description |
+|--------|-------------|
+| `weekly_exerc/src/` | Java source files for weekly exercises (lesson1_1.java - lesson1_4.java, plus compiled .class files) |
+| `weekly_exerc/lib/` | External dependencies/libraries |
+| `weekly_exerc/README.md` | Project instructions/notes |
+
+**Topics Being Covered:**
+- Python Fundamentals (Variables, Data Types, Functions, Control Structures)
+- Data Structures (Lists, Tuples, Dictionaries, Sets)
+- NumPy for Numerical Computing (Arrays, Matrix Operations, Statistics)
+- Pandas for Data Analysis (Series, DataFrames, Data Manipulation)
+- Data Visualization with Matplotlib (Upcoming)
+- Object Oriented Programming in Java (Classes, Objects, Inheritance, Polymorphism)
+
+---
+
+## 🛠️ Technologies Used
+
+| Semester | Languages/Tools | Environment |
+|----------|-----------------|-------------|
+| SEM 1 | C | GCC Compiler |
+| SEM 2 | Python (NumPy, Pandas), Java | Python 3.12.0, JupyterLab |
+| SEM 3-8 | To be updated | - |
+
+---
+
+## 🚀 How to Use
+
+### For C Programs (SEM1)
+```bash
+# Compile
+gcc filename.c -o output
+
+# Run
+./output
+```
+
+### For Python/Jupyter (SEM2 onwards)
+```bash
+# Navigate to folder
+cd SEM2/dv_lab
+
+# Activate virtual environment (Python 3.12.0)
+source .venv/bin/activate  # Linux/Mac
+.venv\Scripts\activate     # Windows
+
+# Install required packages (if not already installed)
+pip install numpy pandas matplotlib
+
+# Run Python file
+python filename.py
+
+# Or open Jupyter notebooks
+jupyter notebook
+```
+
+### For Java Programs (SEM2 - OOP Lab)
+```bash
+# Navigate to project folder
+cd SEM2/oops_lab/weekly_exerc
+
+# Compile
+javac -d bin src/App.java
+
+# Run
+java -cp bin App
+```
+
+---
+
+## 📊 Progress Tracker
+
+| Semester | Status | Completion |
+|----------|--------|------------|
+| SEM 1 | ✅ Completed | 100% |
+| SEM 2 | 🔄 In Progress | ~35% |
+| SEM 3 | ⏳ Upcoming | - |
+| SEM 4 | ⏳ Upcoming | - |
+| SEM 5 | ⏳ Upcoming | - |
+| SEM 6 | ⏳ Upcoming | - |
+| SEM 7 | ⏳ Upcoming | - |
+| SEM 8 | ⏳ Upcoming | - |
+
+---
+
+## 👤 Author
+
+**Abdul Fattah**  
+B.Tech CSE Student @ MIT
+
+---
+
+## 📝 License
+
+This repository is for educational purposes. Feel free to use the code for learning and reference.
+
+---
+
+<p align="center">
+  <i>⭐ Star this repo if you find it helpful!</i>
+</p>
