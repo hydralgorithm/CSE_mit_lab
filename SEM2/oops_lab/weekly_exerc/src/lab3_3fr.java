@@ -16,6 +16,7 @@ class Merge{
                 arr[i] = val;
             }
         }
+        sc.close();
     }
     Merge mix(Merge A){
         Merge result = new Merge();
