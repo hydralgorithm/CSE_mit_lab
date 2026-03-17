@@ -5,7 +5,7 @@ class Employee{
     int Eid;
     double Basic, DA, Gross_sal, Net_sal;
     void read(Scanner sc){
-       
+        sc.nextLine(); // Consume the leftover newline character
         System.out.print("Enter emp name: ");
         this.Ename = sc.nextLine();
         System.out.print("Enter emp id: ");
