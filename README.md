@@ -1,188 +1,147 @@
-# 🎓 CSE Lab Activities - Manipal Institute of Technology
+# CSE MIT Lab Repository
 
-A comprehensive collection of my Computer Science Engineering (CSE) lab work, assignments, and practice files throughout my undergraduate journey at Manipal Institute of Technology (MIT), Bengaluru.
+Coursework, lab practice, and supporting tooling for CSE labs.
 
-> 📚 **Status:** Currently in Semester 2 (~35%) | Will be updated through all 8 semesters
+This repository currently contains:
 
----
+- Semester 1 C programming work
+- Semester 2 Data Visualization and OOP work
+- A React + Vite code browser app (`code-portal`) that indexes and displays code files
 
-## 📁 Repository Structure
+## Current Top-Level Layout
 
-```
+```text
 CSE_mit_lab/
-├── SEM1/                    # Semester 1 - C Programming
-│   ├── labExps/             # Lab experiments (exp1.c - exp48.c)
-│   ├── labMidTermPractice/  # Mid-term practice problems
-│   ├── endSemPrep/          # End semester preparation
-│   │   ├── general/         # General practice problems
-│   │   └── lab/             # Lab-specific practice
-│   ├── endSemLabPractice/   # End semester lab practice
-│   └── Assignments/         # Course assignments
-│
-├── SEM2/                    # Semester 2 (Ongoing)
-│   ├── dv_lab/              # Data Visualization Lab
-│   │   ├── lessons/         # Weekly lessons (week1-5.ipynb)
-│   │   ├── questions/       # Lab manual and assignment PDFs
-│   │   └── .venv/           # Python virtual environment (Python 3.12.0)
-│   ├── oops_lab/            # Object Oriented Programming Lab (Java)
-│   │   ├── weekly_exerc/    # Weekly exercises (Java project)
-│   │   │   ├── src/         # Java source files
-│   │   │   ├── lib/         # External dependencies/libraries
-│   │   │   └── README.md    # Project-specific notes
-│   │   └── questions/       # OOP Lab manual and assignments
-│   └── emergency/           # Emergency practice files
-│
-├── SEM3/                    # (Coming Soon)
-├── SEM4/                    # (Coming Soon)
-├── SEM5/                    # (Coming Soon)
-├── SEM6/                    # (Coming Soon)
-├── SEM7/                    # (Coming Soon)
-└── SEM8/                    # (Coming Soon)
+|- SEM1/
+|- SEM2/
+|- code-portal/
+|- README.md
+|- LICENSE
 ```
 
----
+## Semester 1 (`SEM1`)
 
-## 📖 Semester Details
+Main folders:
 
-### Semester 1 - Fundamentals of Programming (C Language)
+- `Assignments/`
+- `labExps/`
+- `labMidTermPractice/`
+- `endSemPrep/`
+- `endSemLabPractice/`
 
-| Folder | Description | Files |
-|--------|-------------|-------|
-| `labExps/` | Weekly lab experiments covering C basics to advanced topics | 48 programs |
-| `labMidTermPractice/` | Practice problems for mid-term lab exam | 29 programs |
-| `endSemPrep/general/` | General C programming practice | 20 programs |
-| `endSemPrep/lab/` | Lab-focused end semester preparation | 47 programs |
-| `endSemLabPractice/` | Final lab exam practice | 43 programs |
-| `Assignments/` | Course assignments | Various |
+Approximate C file coverage in SEM1:
 
-**Topics Covered:**
-- Basic I/O, Data Types, Operators
-- Control Structures (if-else, loops)
-- Functions and Recursion
-- Arrays and Strings
-- Pointers
-- Structures and Unions
-- File Handling
+- `labExps`: 48 `.c` files
+- `labMidTermPractice`: 29 `.c` files
+- `endSemPrep` (combined): 67 `.c` files
+- `endSemLabPractice`: 43 `.c` files
+- `Assignments`: 1 `.c` file
 
----
+## Semester 2 (`SEM2`)
 
-### Semester 2 - Data Visualization & OOP (Ongoing)
+Main folders:
 
-| Folder | Description | Language/Tools |
-|--------|-------------|----------------|
-| `dv_lab/lessons/` | Data Visualization Lab - Weekly lessons | Python, Jupyter Notebook |
-| `oops_lab/weekly_exerc/` | Object Oriented Programming Lab - Weekly exercises | Java |
+- `dv_lab/`
+- `oops_lab/`
+- `emergency/`
 
-#### Data Visualization Lab Content
+### Data Visualization Lab (`SEM2/dv_lab`)
 
-| Notebook | Topics Covered |
-|----------|----------------|
-| `week1.ipynb` | **Python Basics:** Basic I/O, Arithmetic operations, Prime number check, Even/Odd numbers, Functions, String operations (vowel/consonant count) |
-| `week2.ipynb` | **Python Data Structures:** Lists (min/max, sum, avg, count), Tuples (immutability), Dictionaries (World Cup winners, word frequency), Sets (union, intersection, difference) |
-| `week3.ipynb` | **NumPy Basics:** Arrays (random generation, reshaping), Statistical functions (mean, median, std), Matrix operations (addition, subtraction, multiplication, transpose, determinant, inverse) |
-| `week4.ipynb` | **Pandas Series:** Temperature data analysis, descriptive stats (mean, min, max), filtering by condition, unit conversion (°C to °F), threshold checks. **Pandas DataFrame:** Student records (10 students with Roll Number, Name, Gender, Marks1-3), total marks calculation, finding min/max/avg marks, identifying highest average student, counting failed students |
-| `week5.ipynb` | **Advanced Pandas Series:** Temperature time series analysis, statistical operations (mean, max, min), conditional filtering, temperature conversions, identifying above-average days |
+Key folders:
 
-#### OOP Lab Content
+- `datasets/`
+- `lessons/`
+- `questions/`
+- `venv/`
 
-| Folder | Description |
-|--------|-------------|
-| `weekly_exerc/src/` | Java source files for weekly exercises (lesson1_1.java - lesson1_4.java, plus compiled .class files) |
-| `weekly_exerc/lib/` | External dependencies/libraries |
-| `weekly_exerc/README.md` | Project instructions/notes |
+Current lesson notebooks in `lessons/`:
 
-**Topics Being Covered:**
-- Python Fundamentals (Variables, Data Types, Functions, Control Structures)
-- Data Structures (Lists, Tuples, Dictionaries, Sets)
-- NumPy for Numerical Computing (Arrays, Matrix Operations, Statistics)
-- Pandas for Data Analysis (Series, DataFrames, Data Manipulation)
-- Data Visualization with Matplotlib (Upcoming)
-- Object Oriented Programming in Java (Classes, Objects, Inheritance, Polymorphism)
+- `week1.ipynb`
+- `week2.ipynb`
+- `week3.ipynb`
+- `week4.ipynb`
+- `week5.ipynb`
+- `week6.ipynb`
+- `week7.ipynb`
+- `week8.ipynb`
 
----
+### OOP Lab (`SEM2/oops_lab`)
 
-## 🛠️ Technologies Used
+Key folders:
 
-| Semester | Languages/Tools | Environment |
-|----------|-----------------|-------------|
-| SEM 1 | C | GCC Compiler |
-| SEM 2 | Python (NumPy, Pandas), Java | Python 3.12.0, JupyterLab |
-| SEM 3-8 | To be updated | - |
+- `questions/`
+- `pract/`
+- `midex_pract/`
+- `weekly_exerc/`
 
----
+In `weekly_exerc/src/`:
 
-## 🚀 How to Use
+- Java exercise files from `lab1_1.java` through `lab6_2.java` (and related variants)
+- Several compiled `.class` files are also present
 
-### For C Programs (SEM1)
+## Code Portal App (`code-portal`)
+
+`code-portal` is a React + Vite app for browsing repository code via a generated index.
+
+Important folders/files:
+
+- `src/` (React UI)
+- `public/index.json` (generated file index)
+- `public/codes/` and `public/codes_temp/` (mirrored code content)
+- `scripts/build-index.mjs`
+- `scripts/watch-index.mjs`
+- `vite.config.js`, `eslint.config.js`, `vercel.json`
+
+## How to Run
+
+### C files (SEM1)
+
 ```bash
-# Compile
-gcc filename.c -o output
-
-# Run
-./output
+gcc file.c -o out
+./out
 ```
 
-### For Python/Jupyter (SEM2 onwards)
+### Java files (SEM2 OOP)
+
 ```bash
-# Navigate to folder
+cd SEM2/oops_lab/weekly_exerc/src
+javac labX_Y.java
+java labX_Y
+```
+
+Example:
+
+```bash
+javac lab6_1.java
+java lab6_1
+```
+
+### Jupyter notebooks (SEM2 DV)
+
+```bash
 cd SEM2/dv_lab
-
-# Activate virtual environment (Python 3.12.0)
-source .venv/bin/activate  # Linux/Mac
-.venv\Scripts\activate     # Windows
-
-# Install required packages (if not already installed)
-pip install numpy pandas matplotlib
-
-# Run Python file
-python filename.py
-
-# Or open Jupyter notebooks
 jupyter notebook
 ```
 
-### For Java Programs (SEM2 - OOP Lab)
+### Code Portal
+
 ```bash
-# Navigate to project folder
-cd SEM2/oops_lab/weekly_exerc
-
-# Compile
-javac -d bin src/App.java
-
-# Run
-java -cp bin App
+cd code-portal
+npm install
+npm run dev
 ```
 
----
+Build production bundle:
 
-## 📊 Progress Tracker
+```bash
+npm run build
+```
 
-| Semester | Status | Completion |
-|----------|--------|------------|
-| SEM 1 | ✅ Completed | 100% |
-| SEM 2 | 🔄 In Progress | ~35% |
-| SEM 3 | ⏳ Upcoming | - |
-| SEM 4 | ⏳ Upcoming | - |
-| SEM 5 | ⏳ Upcoming | - |
-| SEM 6 | ⏳ Upcoming | - |
-| SEM 7 | ⏳ Upcoming | - |
-| SEM 8 | ⏳ Upcoming | - |
+## Notes
 
----
+- This repo currently includes generated/dependency-heavy folders in places (for example `code-portal/node_modules` and `SEM2/dv_lab/venv`).
+- For cleaner source-only tracking, these can be excluded from version control later if desired.
 
-## 👤 Author
+## License
 
-**Abdul Fattah**  
-B.Tech CSE Student @ MIT
-
----
-
-## 📝 License
-
-This repository is for educational purposes. Feel free to use the code for learning and reference.
-
----
-
-<p align="center">
-  <i>⭐ Star this repo if you find it helpful!</i>
-</p>
+See `LICENSE`.
