@@ -2,26 +2,52 @@
 
 Coursework, lab practice, and supporting tooling for CSE labs.
 
-This repository currently contains:
+## Overview
 
-- Semester 1 C programming work
-- Semester 2 Data Visualization and OOP work
-- A React + Vite code browser app (`code-portal`) that indexes and displays code files
+This repository contains:
 
-## Current Top-Level Layout
+- Semester 1 C programming assignments and lab practice
+- Semester 2 Data Visualization and OOP lab work (Python/Jupyter and Java)
+- A React + Vite code browser app (`code-portal`) for indexing and browsing source files
+
+Snapshot date: March 19, 2026
+
+## Repository Snapshot
+
+Raw repository file counts include dependency/generated directories (for example `node_modules` and Python `venv`).
+
+- Top-level folders: `.github`, `.vite`, `.vscode`, `SEM1`, `SEM2`, `code-portal`
+- Total files by major top-level folder:
+	- `SEM1`: 201
+	- `SEM2`: 19,738
+	- `code-portal`: 14,326
+
+Source-focused counts (excluding `.git`, `.vite`, `node_modules`, `venv`, `__pycache__`):
+
+- `SEM1`: 201 files
+- `SEM2`: 172 files
+- `code-portal`: 1,076 files
+
+## Top-Level Layout
 
 ```text
 CSE_mit_lab/
+|- .github/
+|- .vite/
+|- .vscode/
+|- code-portal/
 |- SEM1/
 |- SEM2/
-|- code-portal/
-|- README.md
+|- .gitignore
 |- LICENSE
+|- README.md
 ```
 
 ## Semester 1 (`SEM1`)
 
-Main folders:
+Primary focus: C programming practice and exam preparation.
+
+Folders:
 
 - `Assignments/`
 - `labExps/`
@@ -29,17 +55,21 @@ Main folders:
 - `endSemPrep/`
 - `endSemLabPractice/`
 
-Approximate C file coverage in SEM1:
+Verified `.c` file counts:
 
-- `labExps`: 48 `.c` files
-- `labMidTermPractice`: 29 `.c` files
-- `endSemPrep` (combined): 67 `.c` files
-- `endSemLabPractice`: 43 `.c` files
-- `Assignments`: 1 `.c` file
+- `Assignments`: 1
+- `labExps`: 48
+- `labMidTermPractice`: 29
+- `endSemPrep`: 67
+- `endSemLabPractice`: 43
+
+Other files present include `.txt` and compiled `.exe` files.
 
 ## Semester 2 (`SEM2`)
 
-Main folders:
+Primary focus: Data Visualization and Object-Oriented Programming labs.
+
+Folders:
 
 - `dv_lab/`
 - `oops_lab/`
@@ -47,61 +77,76 @@ Main folders:
 
 ### Data Visualization Lab (`SEM2/dv_lab`)
 
-Key folders:
+Subfolders and file counts:
 
-- `datasets/`
-- `lessons/`
-- `questions/`
-- `venv/`
+- `datasets/`: 8 files
+- `lessons/`: 8 files
+- `questions/`: 2 files
+- `venv/`: 19,566 files (Python virtual environment)
 
-Current lesson notebooks in `lessons/`:
+Lesson notebooks in `lessons/`:
 
-- `week1.ipynb`
-- `week2.ipynb`
-- `week3.ipynb`
-- `week4.ipynb`
-- `week5.ipynb`
-- `week6.ipynb`
-- `week7.ipynb`
-- `week8.ipynb`
+- `week1.ipynb` to `week8.ipynb`
 
 ### OOP Lab (`SEM2/oops_lab`)
 
-Key folders:
+Subfolders and file counts:
 
-- `questions/`
-- `pract/`
-- `midex_pract/`
-- `weekly_exerc/`
+- `midex_pract/`: 82 files
+- `pract/`: 12 files
+- `questions/`: 1 file
+- `weekly_exerc/`: 56 files
 
-In `weekly_exerc/src/`:
+`weekly_exerc/src/` contains:
 
-- Java exercise files from `lab1_1.java` through `lab6_2.java` (and related variants)
-- Several compiled `.class` files are also present
+- 31 Java source files (`.java`), including `lab1_1.java` through `lab6_3re.java`
+- 21 compiled Java class files (`.class`)
+
+### Emergency Notes (`SEM2/emergency`)
+
+Contains quick-reference text files:
+
+- `L1.txt`
+- `L2.txt`
+- `L3.txt`
 
 ## Code Portal App (`code-portal`)
 
-`code-portal` is a React + Vite app for browsing repository code via a generated index.
+`code-portal` is a React + Vite app used to browse indexed code content.
 
-Important folders/files:
+Key folders:
 
-- `src/` (React UI)
-- `public/index.json` (generated file index)
-- `public/codes/` and `public/codes_temp/` (mirrored code content)
-- `scripts/build-index.mjs`
-- `scripts/watch-index.mjs`
-- `vite.config.js`, `eslint.config.js`, `vercel.json`
+- `src/` (frontend application: `App.jsx`, `FileViewer.jsx`, `main.jsx`, CSS)
+- `scripts/` (`build-index.mjs`, `watch-index.mjs`)
+- `public/index.json` (generated searchable index)
+- `public/codes/` and `public/codes_temp/` (mirrored code trees used by the viewer)
 
-## How to Run
+Directory stats:
 
-### C files (SEM1)
+- `src/`: 8 files
+- `scripts/`: 2 files
+- `public/`: 530 files
+- `public/codes/`: 265 files
+- `public/codes_temp/`: 262 files
+- `node_modules/`: 13,246 files
+
+Build/config files:
+
+- `package.json`
+- `vite.config.js`
+- `eslint.config.js`
+- `vercel.json`
+
+## Run Instructions
+
+### Run C Programs
 
 ```bash
-gcc file.c -o out
+gcc path/to/file.c -o out
 ./out
 ```
 
-### Java files (SEM2 OOP)
+### Run Java Programs (OOP Lab)
 
 ```bash
 cd SEM2/oops_lab/weekly_exerc/src
@@ -112,18 +157,18 @@ java labX_Y
 Example:
 
 ```bash
-javac lab6_1.java
-java lab6_1
+javac lab1_4.java
+java lab1_4
 ```
 
-### Jupyter notebooks (SEM2 DV)
+### Run Data Visualization Notebooks
 
 ```bash
 cd SEM2/dv_lab
 jupyter notebook
 ```
 
-### Code Portal
+### Run Code Portal
 
 ```bash
 cd code-portal
@@ -131,7 +176,7 @@ npm install
 npm run dev
 ```
 
-Build production bundle:
+Build for production:
 
 ```bash
 npm run build
@@ -139,9 +184,9 @@ npm run build
 
 ## Notes
 
-- This repo currently includes generated/dependency-heavy folders in places (for example `code-portal/node_modules` and `SEM2/dv_lab/venv`).
-- For cleaner source-only tracking, these can be excluded from version control later if desired.
+- This repository currently includes dependency/generated folders (`SEM2/dv_lab/venv`, `code-portal/node_modules`, and `.vite`).
+- If you want a source-only Git history, these folders can be excluded via `.gitignore` and regenerated locally.
 
 ## License
 
-See `LICENSE`.
+This project is licensed under the terms in `LICENSE`.
