@@ -10,6 +10,7 @@ public class OrderDemo {
         Scanner sc = new Scanner(System.in);
 
         try {
+            // Input order type and shared fields.
             String type = sc.next();
             String orderId = sc.next();
             String customer = sc.next();
@@ -29,6 +30,7 @@ public class OrderDemo {
                 throw new InvalidOrderException("Unknown order type.");
             }
 
+            // Runtime polymorphism via Order reference.
             System.out.println(order);
             System.out.println("Total: " + order.calculateTotal());
 
@@ -37,6 +39,7 @@ public class OrderDemo {
         } catch (InvalidOrderException ex) {
             System.out.println("Order error: " + ex.getMessage());
         } finally {
+            // Cleanup resource.
             sc.close();
         }
     }

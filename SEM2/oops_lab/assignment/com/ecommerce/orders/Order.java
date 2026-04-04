@@ -8,6 +8,7 @@ public class Order {
     private final double baseAmount;
 
     public Order(String orderId, String customerName, double baseAmount) throws InvalidOrderException {
+        // Validate base amount in the superclass constructor.
         if (baseAmount <= 0) {
             throw new InvalidOrderException("Order amount must be positive.");
         }
@@ -17,6 +18,7 @@ public class Order {
     }
 
     public double calculateTotal() {
+        // Base implementation, overridden by subclasses.
         return baseAmount;
     }
 

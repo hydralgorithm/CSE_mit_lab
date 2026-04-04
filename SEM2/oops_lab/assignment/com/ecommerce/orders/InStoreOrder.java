@@ -9,6 +9,7 @@ public class InStoreOrder extends Order implements Discountable, Taxable {
 
     public InStoreOrder(String orderId, String customerName, double baseAmount,
                         String storeCode, double discountRate, double taxRate) throws InvalidOrderException {
+        // Constructor chaining to validate and initialize common fields.
         super(orderId, customerName, baseAmount);
         this.storeCode = storeCode;
         this.discountRate = discountRate;
@@ -27,6 +28,7 @@ public class InStoreOrder extends Order implements Discountable, Taxable {
 
     @Override
     public double calculateTotal() {
+        // In-store total applies discount then tax.
         double amount = getBaseAmount();
         amount = applyDiscount(amount);
         return applyTax(amount);

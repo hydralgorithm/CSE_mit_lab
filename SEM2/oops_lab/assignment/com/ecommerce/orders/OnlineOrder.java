@@ -9,6 +9,7 @@ public class OnlineOrder extends Order implements Discountable, Taxable {
 
     public OnlineOrder(String orderId, String customerName, double baseAmount,
                        double shippingFee, double discountRate, double taxRate) throws InvalidOrderException {
+        // Constructor chaining to validate and initialize common fields.
         super(orderId, customerName, baseAmount);
         this.shippingFee = shippingFee;
         this.discountRate = discountRate;
@@ -27,6 +28,7 @@ public class OnlineOrder extends Order implements Discountable, Taxable {
 
     @Override
     public double calculateTotal() {
+        // Apply discount, then tax, then add shipping.
         double amount = getBaseAmount();
         amount = applyDiscount(amount);
         amount = applyTax(amount);
