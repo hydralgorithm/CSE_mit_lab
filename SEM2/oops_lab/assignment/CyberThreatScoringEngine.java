@@ -50,9 +50,11 @@ public class CyberThreatScoringEngine {
 
         int n = sc.nextInt();
 
-        // In Java, variables used inside anonymous classes must be final or effectively final.
-        // Since we need to modify total inside the loop, we use an array as a workaround.
-        // Arrays are mutable, so total[0] can be updated.
+        /*  
+            In Java, variables used inside anonymous classes must be final or effectively final.
+            Since we need to modify total inside the loop, we use an array as a workaround.
+            Arrays are mutable, so total[0] can be updated.
+        */
         int[] total = {0};
 
         for (int i = 0; i < n; i++) {
