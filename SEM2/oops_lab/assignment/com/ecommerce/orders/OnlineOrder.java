@@ -1,42 +1,55 @@
+/*
+ * File    : OnlineOrder.java
+ * Package : com.ecommerce.orders
+ * Purpose : Subclass of Order representing an online order.
+ *           Implements Discountable (10% discount) and
+ *           Taxable (18% tax) interfaces.
+ *           Total = (amount - 10% discount + 18% tax) + shipping
+ *           Constructor chains to superclass using super keyword.
+ *           calculateTotal() and toString() are overridden.
+ */
 package com.ecommerce.orders;
 
 import com.ecommerce.exceptions.InvalidOrderException;
 
 public class OnlineOrder extends Order implements Discountable, Taxable {
-    private final double shippingFee;
-    private final double discountRate;
-    private final double taxRate;
 
-    public OnlineOrder(String orderId, String customerName, double baseAmount,
-                       double shippingFee, double discountRate, double taxRate) throws InvalidOrderException {
-        // Constructor chaining to validate and initialize common fields.
-        super(orderId, customerName, baseAmount);
-        this.shippingFee = shippingFee;
-        this.discountRate = discountRate;
-        this.taxRate = taxRate;
+    private String deliveryAddress;
+    private double shippingCharge;
+
+    // Constructor chains to Order superclass using super
+    public OnlineOrder(String orderId, String customerName,
+                       double orderAmount, String deliveryAddress,
+                       double shippingCharge) throws InvalidOrderException {
+        super(orderId, customerName, orderAmount);
+        this.deliveryAddress = deliveryAddress;
+        this.shippingCharge  = shippingCharge;
     }
 
-    @Override
+    // Applies 10% discount - satisfies Discountable interface
     public double applyDiscount(double amount) {
-        return amount - (amount * discountRate);
+        return amount - (amount * 0.10);
     }
 
-    @Override
+    // Applies 18% tax - satisfies Taxable interface
     public double applyTax(double amount) {
-        return amount + (amount * taxRate);
+        return amount + (amount * 0.18);
     }
 
-    @Override
+    // Overrides calculateTotal from Order
+    // Applies discount first, then tax, then adds shipping
     public double calculateTotal() {
-        // Apply discount, then tax, then add shipping.
-        double amount = getBaseAmount();
-        amount = applyDiscount(amount);
-        amount = applyTax(amount);
-        return amount + shippingFee;
+        double afterDiscount = applyDiscount(orderAmount);
+        double afterTax      = applyTax(afterDiscount);
+        return afterTax + shippingCharge;
     }
 
-    @Override
+    // Overrides toString from Order to include online specific details
     public String toString() {
-        return "Online " + super.toString() + ", Shipping Fee: " + shippingFee;
+        return super.toString() +
+               "\nDelivery Address: " + deliveryAddress +
+               "\nShipping Charge : " + shippingCharge +
+               "\nTotal (10% discount + 18% tax + shipping): "
+               + calculateTotal();
     }
 }

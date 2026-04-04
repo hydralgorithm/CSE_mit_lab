@@ -1,41 +1,48 @@
+/*
+ * File    : Order.java
+ * Package : com.ecommerce.orders
+ * Purpose : Superclass for all order types.
+ *           Stores common fields - orderId, customerName, orderAmount.
+ *           Throws InvalidOrderException if amount is invalid.
+ *           calculateTotal() is meant to be overridden by subclasses.
+ *           toString() is overridden to display order details.
+ */
 package com.ecommerce.orders;
 
 import com.ecommerce.exceptions.InvalidOrderException;
 
 public class Order {
-    private final String orderId;
-    private final String customerName;
-    private final double baseAmount;
 
-    public Order(String orderId, String customerName, double baseAmount) throws InvalidOrderException {
-        // Validate base amount in the superclass constructor.
-        if (baseAmount <= 0) {
-            throw new InvalidOrderException("Order amount must be positive.");
+    // Common fields shared by all order types
+    protected String orderId;
+    protected String customerName;
+    protected double orderAmount;
+
+    // Constructor validates order amount before initializing fields
+    public Order(String orderId, String customerName, double orderAmount)
+                 throws InvalidOrderException {
+
+        // Throw checked exception if order amount is zero or negative
+        if (orderAmount <= 0) {
+            throw new InvalidOrderException(
+                "Invalid order amount: " + orderAmount +
+                ". Amount must be greater than zero.");
         }
-        this.orderId = orderId;
+
+        this.orderId      = orderId;
         this.customerName = customerName;
-        this.baseAmount = baseAmount;
+        this.orderAmount  = orderAmount;
     }
 
+    // Base implementation - overridden by subclasses
     public double calculateTotal() {
-        // Base implementation, overridden by subclasses.
-        return baseAmount;
+        return orderAmount;
     }
 
-    public double getBaseAmount() {
-        return baseAmount;
-    }
-
-    public String getOrderId() {
-        return orderId;
-    }
-
-    public String getCustomerName() {
-        return customerName;
-    }
-
-    @Override
+    // Overrides default toString to display order details
     public String toString() {
-        return "Order ID: " + orderId + ", Customer: " + customerName + ", Base Amount: " + baseAmount;
+        return "Order ID    : " + orderId +
+               "\nCustomer    : " + customerName +
+               "\nOrder Amount: " + orderAmount;
     }
 }
