@@ -48,7 +48,7 @@ public class Main {
 
             System.out.print("Enter Customer Name  : ");
             String storeName2 = sc.next();
-
+            
             System.out.print("Enter Order Amount   : ");
             double storeAmount = sc.nextDouble();
 
@@ -79,8 +79,8 @@ public class Main {
         } finally {
             // Always executes regardless of exception
             // Used for resource cleanup
-            System.out.println("\nSystem: Order processing complete. Resources cleaned up.");
-            sc.close();
+            System.out.println("\nSystem: Order processing complete.");
+            sc.close();  
         }
     }
 }
