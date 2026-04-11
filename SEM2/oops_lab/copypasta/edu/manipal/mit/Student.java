@@ -2,9 +2,9 @@ package edu.manipal.mit;
 
 class Student {
     String name;
-    int rollNumber;
+    int roll;
 
     void display() {
-        System.out.println("Name: " + name + " | Roll: " + rollNumber);
+        System.out.println("Name: " + name + " | Roll: " + roll);
     }
 }

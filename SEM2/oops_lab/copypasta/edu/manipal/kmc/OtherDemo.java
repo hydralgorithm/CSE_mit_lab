@@ -1,10 +1,10 @@
 package edu.manipal.kmc;
 
-import edu.manipal.mit.Student; // Error: Student is not public
+import edu.manipal.mit.Student;
 
 public class OtherDemo {
     public static void main(String[] args) {
-        Student s = new Student(); // Compilation Error
-        s.display();               // Compilation Error
+        Student s = new Student();
+        s.display();
     }
 }
