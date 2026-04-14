@@ -1,8 +1,37 @@
+import { useEffect, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
-import updates from '../data/changelog'
+import fallbackUpdates from '../data/changelog'
 
 export default function Changelog() {
   const reduceMotion = useReducedMotion()
+  const [entries, setEntries] = useState(fallbackUpdates)
+
+  useEffect(() => {
+    let ignore = false
+
+    async function loadChangelog() {
+      try {
+        const response = await fetch('/changelog.json')
+        if (!response.ok) {
+          throw new Error('Changelog unavailable')
+        }
+        const payload = await response.json()
+        if (!ignore && Array.isArray(payload.entries)) {
+          setEntries(payload.entries)
+        }
+      } catch (error) {
+        if (!ignore) {
+          setEntries(fallbackUpdates)
+        }
+      }
+    }
+
+    loadChangelog()
+
+    return () => {
+      ignore = true
+    }
+  }, [])
 
   return (
     <div className="page">
@@ -13,7 +42,7 @@ export default function Changelog() {
       </header>
 
       <section className="changelog-grid">
-        {updates.map((entry, index) => (
+        {entries.map((entry, index) => (
           <motion.article
             key={`${entry.title}-${entry.date}`}
             className="changelog-card"

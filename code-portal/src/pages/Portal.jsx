@@ -160,6 +160,7 @@ export default function Portal() {
   const [fileError, setFileError] = useState('')
   const [fileLoading, setFileLoading] = useState(false)
   const [copyStatus, setCopyStatus] = useState('')
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true)
 
   useEffect(() => {
     let ignore = false
@@ -316,6 +317,16 @@ export default function Portal() {
             <h1>Portal View</h1>
             <p>Search, preview, and copy any lab file instantly.</p>
           </div>
+          <div className="topbar-actions">
+            <button
+              type="button"
+              className="sidebar-toggle"
+              onClick={() => setIsSidebarOpen((current) => !current)}
+              aria-expanded={isSidebarOpen}
+            >
+              {isSidebarOpen ? 'Hide files' : 'Show files'}
+            </button>
+          </div>
           <div className="topbar-meta">
             <div className="stat">
               <span className="stat-label">Indexed</span>
@@ -328,7 +339,9 @@ export default function Portal() {
           </div>
         </header>
 
-        <section className="content-shell">
+        <section
+          className={`content-shell ${isSidebarOpen ? 'sidebar-open' : 'sidebar-collapsed'}`}
+        >
           <aside className="sidebar">
             <label htmlFor="search">Search file or path</label>
             <div className="search-row">

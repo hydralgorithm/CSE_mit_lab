@@ -56,7 +56,9 @@ So if you create a new code file/folder in your main repo, it appears in the sit
 npm run build
 ```
 
-Before build, `prebuild` runs `npm run index:build` automatically.
+Before build, `prebuild` runs `npm run index:build` and `npm run changelog:build` automatically.
+
+The changelog page reads from `public/changelog.json`, generated from recent git commits.
 
 ## Vercel deployment
 

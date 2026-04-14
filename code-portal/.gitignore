@@ -13,6 +13,7 @@ dist-ssr
 *.local
 public/codes
 public/index.json
+public/changelog.json
 .cache/
 
 # Editor directories and files
