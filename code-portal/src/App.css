@@ -404,9 +404,9 @@
   font-weight: 700;
   letter-spacing: -0.02em;
   font-family: var(--font-display);
-  background: linear-gradient(120deg, var(--accent), #22d3ee, #eab308);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--title-text);
+  background: none;
+  text-shadow: 0 8px 18px rgba(59, 130, 246, 0.25);
 }
 
 .title-block p {
@@ -564,17 +564,21 @@
 
 .tree-row:hover {
   background: var(--hover-bg);
-  color: var(--accent);
+  color: var(--accent-soft);
 }
 
 .tree-row.folder {
   font-weight: 600;
-  color: var(--accent);
+  color: var(--folder-text);
+}
+
+.tree-row.file {
+  color: var(--file-text);
 }
 
 .tree-row.file.selected {
   background: var(--selected-bg);
-  color: #041312;
+  color: #1b1200;
   font-weight: 600;
 }
 
@@ -632,7 +636,7 @@
   border-radius: 10px;
   border: 1px solid var(--border-strong);
   background: var(--selected-bg);
-  color: #052e2b;
+  color: #1b1200;
   font-weight: 600;
   font-size: 0.85rem;
   cursor: pointer;
