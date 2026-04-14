@@ -1,32 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
 
 :root {
-  --text: #e2e8f0;
-  --text-muted: #7c8aa5;
-  --bg: #070b14;
-  --panel-bg: rgba(12, 18, 31, 0.9);
-  --tree-bg: rgba(8, 13, 25, 0.85);
-  --input-bg: rgba(6, 10, 19, 0.9);
-  --hover-bg: rgba(34, 197, 178, 0.08);
-  --selected-bg: #22d3ee;
-  --border: rgba(60, 75, 110, 0.5);
-  --border-strong: rgba(84, 106, 150, 0.6);
-  --code-bg: #030712;
-  --code-text: #e2e8f0;
-  --accent: #2dd4bf;
-  --accent-strong: #38bdf8;
-  --glass: rgba(12, 18, 31, 0.7);
-  --shadow-soft: 0 18px 50px -20px rgba(4, 8, 15, 0.8);
-  --shadow-strong: 0 25px 60px -25px rgba(15, 23, 42, 0.9);
-  --font-display: 'Space Grotesk', system-ui, sans-serif;
-  --font-body: 'Space Grotesk', system-ui, sans-serif;
+  --text: #e6edf7;
+  --text-muted: #8a98b1;
+  --bg: #06080e;
+  --panel-bg: rgba(11, 15, 24, 0.9);
+  --panel-strong: rgba(18, 26, 42, 0.95);
+  --tree-bg: rgba(9, 13, 21, 0.9);
+  --input-bg: rgba(6, 10, 18, 0.95);
+  --hover-bg: rgba(59, 130, 246, 0.08);
+  --selected-bg: #fbbf24;
+  --border: rgba(72, 88, 120, 0.55);
+  --border-strong: rgba(96, 118, 162, 0.65);
+  --code-bg: #0b0f19;
+  --code-text: #e8eef8;
+  --accent: #3b82f6;
+  --accent-strong: #f97316;
+  --glass: rgba(10, 14, 24, 0.75);
+  --shadow-soft: 0 18px 50px -22px rgba(6, 10, 20, 0.85);
+  --shadow-strong: 0 28px 70px -28px rgba(6, 11, 23, 0.95);
+  --font-display: 'Chakra Petch', system-ui, sans-serif;
+  --font-body: 'IBM Plex Sans', system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
 
   font-family: var(--font-body);
   color: var(--text);
-  background: radial-gradient(circle at top, rgba(34, 211, 238, 0.12), transparent 55%),
-    radial-gradient(circle at 10% 20%, rgba(45, 212, 191, 0.08), transparent 45%),
-    linear-gradient(135deg, #05070f, #0b1222 55%, #0b1f2e 100%);
+  background: radial-gradient(circle at 20% 0%, rgba(59, 130, 246, 0.18), transparent 55%),
+    radial-gradient(circle at 80% 10%, rgba(249, 115, 22, 0.12), transparent 45%),
+    linear-gradient(145deg, #04060a, #0a111f 55%, #0d1b2a 100%);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -47,10 +48,10 @@ body::before {
   content: '';
   position: fixed;
   inset: 0;
-  background-image: linear-gradient(rgba(45, 212, 191, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(45, 212, 191, 0.08) 1px, transparent 1px);
-  background-size: 42px 42px;
-  opacity: 0.25;
+  background-image: linear-gradient(rgba(59, 130, 246, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.12) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.2;
   pointer-events: none;
   z-index: -1;
 }

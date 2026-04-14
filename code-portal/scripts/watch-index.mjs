@@ -1,9 +1,34 @@
 import { watch } from 'node:fs'
+import { readFile } from 'node:fs/promises'
 import path from 'node:path'
+import ignore from 'ignore'
 import { buildIndex, workspaceRoot, EXCLUDED_DIRS, INCLUDED_ROOTS } from './build-index.mjs'
 
 function toPosixPath(value) {
   return value.split(path.sep).join('/')
+}
+
+const ignoreFilePath = path.join(workspaceRoot, '.code-portalignore')
+let ignoreRules = ignore()
+
+async function loadIgnoreRules() {
+  try {
+    const raw = await readFile(ignoreFilePath, 'utf8')
+    ignoreRules = ignore().add(raw)
+  } catch (error) {
+    ignoreRules = ignore()
+  }
+}
+
+function isIgnored(relativePosixPath) {
+  if (!relativePosixPath) {
+    return false
+  }
+
+  return (
+    ignoreRules.ignores(relativePosixPath) ||
+    ignoreRules.ignores(`${relativePosixPath}/`)
+  )
 }
 
 function shouldIgnore(relativePath) {
@@ -18,7 +43,11 @@ function shouldIgnore(relativePath) {
     return true
   }
 
-  return EXCLUDED_DIRS.has(topLevel) || normalizedPath.startsWith('code-portal/')
+  if (EXCLUDED_DIRS.has(topLevel) || normalizedPath.startsWith('code-portal/')) {
+    return true
+  }
+
+  return isIgnored(normalizedPath)
 }
 
 let timer = null
@@ -57,10 +86,16 @@ function scheduleBuild(reason) {
   }, 400)
 }
 
+await loadIgnoreRules()
 await runBuild('initial-build')
 
 watch(workspaceRoot, { recursive: true }, (eventType, filename) => {
   const relativePath = typeof filename === 'string' ? filename : ''
+  if (relativePath && toPosixPath(relativePath) === '.code-portalignore') {
+    loadIgnoreRules().then(() => runBuild('ignore-updated'))
+    return
+  }
+
   if (shouldIgnore(relativePath)) {
     return
   }

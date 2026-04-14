@@ -1,6 +1,7 @@
 import { readdir, mkdir, copyFile, writeFile, stat, rename, readFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import ignore from 'ignore'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -12,6 +13,7 @@ const outputCodesRoot = path.join(outputRoot, 'codes')
 const outputIndexPath = path.join(outputRoot, 'index.json')
 const cacheRoot = path.join(projectRoot, '.cache')
 const cachePath = path.join(cacheRoot, 'index-cache.json')
+const ignoreFilePath = path.join(workspaceRoot, '.code-portalignore')
 
 export const INCLUDED_ROOTS = ['SEM1', 'SEM2']
 
@@ -49,7 +51,24 @@ function toPosixPath(value) {
   return value.split(path.sep).join('/')
 }
 
-async function walk(dirPath, collector) {
+async function loadIgnoreRules() {
+  try {
+    const raw = await readFile(ignoreFilePath, 'utf8')
+    return ignore().add(raw)
+  } catch (error) {
+    return ignore()
+  }
+}
+
+function isIgnored(ig, relativePosixPath) {
+  if (!ig || !relativePosixPath) {
+    return false
+  }
+
+  return ig.ignores(relativePosixPath) || ig.ignores(`${relativePosixPath}/`)
+}
+
+async function walk(dirPath, collector, ig) {
   const entries = await readdir(dirPath, { withFileTypes: true })
 
   for (const entry of entries) {
@@ -62,11 +81,15 @@ async function walk(dirPath, collector) {
       continue
     }
 
+    if (isIgnored(ig, relativePosixPath)) {
+      continue
+    }
+
     if (entry.isDirectory()) {
       if (EXCLUDED_DIRS.has(entry.name)) {
         continue
       }
-      await walk(fullPath, collector)
+      await walk(fullPath, collector, ig)
       continue
     }
 
@@ -140,10 +163,11 @@ async function saveCache(cache) {
 }
 
 export async function buildIndex() {
+  const ig = await loadIgnoreRules()
   const cache = await loadCache()
   const cachedFiles = cache.files || {}
   const files = []
-  await walk(workspaceRoot, files)
+  await walk(workspaceRoot, files, ig)
 
   files.sort((a, b) => a.path.localeCompare(b.path))
 

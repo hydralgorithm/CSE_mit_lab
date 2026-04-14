@@ -10,9 +10,29 @@ No manual updates are needed when new folders/files are added.
 
 ## How automatic updates work
 
-- `scripts/build-index.mjs` scans the workspace root (`../`) for code files.
+- `scripts/build-index.mjs` scans the workspace root (`../`) for code files (SEM1 + SEM2).
 - It copies them to `public/codes/...` and writes `public/index.json`.
 - The React app reads `index.json` and displays the folder tree + search.
+
+## Routes
+
+- `/` Landing page
+- `/portal` File browser
+- `/changelog` Recent updates
+- `*` Not found page
+
+## Excluding files from the portal
+
+Create or edit the repo-level `.code-portalignore` file (next to this README's parent folder).
+It uses gitignore-style patterns and keeps files in GitHub while skipping them in the portal.
+
+Example:
+
+```text
+SEM1/private/**
+SEM2/tmp/**
+**/draft-*.md
+```
 
 ## Local development
 

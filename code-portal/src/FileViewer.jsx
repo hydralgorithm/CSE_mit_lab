@@ -121,7 +121,7 @@ export function FileViewer({ file, content }) {
       <SyntaxHighlighter
         language={lang}
         style={vscDarkPlus}
-        customStyle={{ margin: 0, padding: '20px', minHeight: '100%', borderRadius: '0' }}
+        customStyle={{ margin: 0, padding: '20px' }}
         showLineNumbers={true}
       >
         {content}
