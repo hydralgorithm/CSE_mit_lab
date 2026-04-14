@@ -1,5 +1,5 @@
 {
-  "ignoreCommand": "git diff HEAD^ HEAD --quiet . ..",
+  "ignoreCommand": "git diff --quiet HEAD^ HEAD -- code-portal",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
