@@ -16,14 +16,14 @@ export default function AppLayout() {
     <div className="site-shell">
       <header className="site-header">
         <div className="brand">
-          <span className="brand-mark">MIT</span>
+          <img className="brand-mark" src="/mitarchive.png" alt="MitArchive logo" />
           <div>
             <strong>MIT CSE ARCHIVE</strong>
             <span>Code atlas for lab work</span>
           </div>
         </div>
         <nav className="site-nav">
-          <NavItem to="/">Landing</NavItem>
+          <NavItem to="/">Home</NavItem>
           <NavItem to="/portal">Portal</NavItem>
           <NavItem to="/changelog">Changelog</NavItem>
         </nav>

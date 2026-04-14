@@ -13,7 +13,7 @@ const outputPath = path.join(outputRoot, 'changelog.json')
 
 function loadGitLog() {
   try {
-    const raw = execSync('git log -n 20 --pretty=format:%ad|%s --date=short', {
+    const raw = execSync('git log -n 15 --pretty=format:%ad|%s --date=short', {
       cwd: workspaceRoot,
       stdio: ['ignore', 'pipe', 'ignore'],
     })
