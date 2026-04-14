@@ -129,6 +129,48 @@ export default function Landing() {
           ))}
         </div>
       </section>
+
+      <section className="landing-credits">
+        <div>
+          <p className="section-label">Credits</p>
+          <h2>Built by hydralgorithm.</h2>
+          <p className="page-sub">
+            Follow the project and connect with the creator.
+          </p>
+        </div>
+        <div className="credits-links">
+          <a
+            className="icon-link"
+            href="https://github.com/hydralgorithm"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Hydralgorithm on GitHub"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path
+                fill="currentColor"
+                d="M12 2a10 10 0 0 0-3.16 19.48c.5.1.68-.22.68-.48v-1.7c-2.76.6-3.35-1.33-3.35-1.33-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.61.07-.61 1 .07 1.53 1.05 1.53 1.05.9 1.55 2.36 1.1 2.94.84.09-.66.35-1.1.63-1.35-2.2-.25-4.5-1.1-4.5-4.9 0-1.08.39-1.96 1.03-2.65-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.9-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.69 1.03 1.57 1.03 2.65 0 3.81-2.31 4.64-4.51 4.88.36.31.68.92.68 1.86v2.75c0 .27.18.59.69.48A10 10 0 0 0 12 2z"
+              />
+            </svg>
+            <span>GitHub</span>
+          </a>
+          <a
+            className="icon-link"
+            href="https://www.linkedin.com/in/im-abdul-fattah/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Abdul Fattah on LinkedIn"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path
+                fill="currentColor"
+                d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zm-9 8H7v7h3v-7zm-1.5-1.7a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM18 18v-4.2c0-2.24-1.2-3.3-2.8-3.3-1.3 0-1.88.72-2.2 1.22V11h-2.8v7H13v-3.9c0-1.02.2-2 1.46-2 1.24 0 1.26 1.16 1.26 2.06V18H18z"
+              />
+            </svg>
+            <span>LinkedIn</span>
+          </a>
+        </div>
+      </section>
     </div>
   )
 }
