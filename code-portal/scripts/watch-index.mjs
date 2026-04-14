@@ -1,6 +1,6 @@
 import { watch } from 'node:fs'
 import path from 'node:path'
-import { buildIndex, workspaceRoot, EXCLUDED_DIRS } from './build-index.mjs'
+import { buildIndex, workspaceRoot, EXCLUDED_DIRS, INCLUDED_ROOTS } from './build-index.mjs'
 
 function toPosixPath(value) {
   return value.split(path.sep).join('/')
@@ -13,6 +13,10 @@ function shouldIgnore(relativePath) {
 
   const normalizedPath = toPosixPath(relativePath)
   const topLevel = normalizedPath.split('/')[0]
+
+  if (!INCLUDED_ROOTS.includes(topLevel)) {
+    return true
+  }
 
   return EXCLUDED_DIRS.has(topLevel) || normalizedPath.startsWith('code-portal/')
 }

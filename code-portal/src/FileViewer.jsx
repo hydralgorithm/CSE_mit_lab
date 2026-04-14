@@ -36,6 +36,7 @@ function getLanguageFromExt(ext) {
 
 export function FileViewer({ file, content }) {
   const ext = file?.ext?.toLowerCase()
+  const isLargeFile = typeof file?.size === 'number' && file.size > 200000
 
   if (ext === '.md') {
     return (
@@ -106,6 +107,14 @@ export function FileViewer({ file, content }) {
 
   // Fallback for code files
   const lang = getLanguageFromExt(ext)
+
+  if (isLargeFile) {
+    return (
+      <div className="code-viewer">
+        <pre className="large-file">{content}</pre>
+      </div>
+    )
+  }
 
   return (
     <div className="code-viewer">

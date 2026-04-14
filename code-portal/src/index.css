@@ -1,20 +1,32 @@
-:root {
-  --text: #f1f5f9;
-  --text-muted: #94a3b8;
-  --bg: #0f172a;
-  --panel-bg: #1e293b;
-  --tree-bg: #0f172a;
-  --input-bg: #020617;
-  --hover-bg: #334155;
-  --selected-bg: #3b82f6;
-  --border: #334155;
-  --code-bg: #020617;
-  --code-text: #e2e8f0;
-  --font-sans: 'Inter', system-ui, -apple-system, Tahoma, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
-  font-family: var(--font-sans);
+:root {
+  --text: #e2e8f0;
+  --text-muted: #7c8aa5;
+  --bg: #070b14;
+  --panel-bg: rgba(12, 18, 31, 0.9);
+  --tree-bg: rgba(8, 13, 25, 0.85);
+  --input-bg: rgba(6, 10, 19, 0.9);
+  --hover-bg: rgba(34, 197, 178, 0.08);
+  --selected-bg: #22d3ee;
+  --border: rgba(60, 75, 110, 0.5);
+  --border-strong: rgba(84, 106, 150, 0.6);
+  --code-bg: #030712;
+  --code-text: #e2e8f0;
+  --accent: #2dd4bf;
+  --accent-strong: #38bdf8;
+  --glass: rgba(12, 18, 31, 0.7);
+  --shadow-soft: 0 18px 50px -20px rgba(4, 8, 15, 0.8);
+  --shadow-strong: 0 25px 60px -25px rgba(15, 23, 42, 0.9);
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+
+  font-family: var(--font-body);
   color: var(--text);
-  background: linear-gradient(135deg, #020617, #0f172a);
+  background: radial-gradient(circle at top, rgba(34, 211, 238, 0.12), transparent 55%),
+    radial-gradient(circle at 10% 20%, rgba(45, 212, 191, 0.08), transparent 45%),
+    linear-gradient(135deg, #05070f, #0b1222 55%, #0b1f2e 100%);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -28,6 +40,19 @@
 body {
   margin: 0;
   min-height: 100vh;
+  background: transparent;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: linear-gradient(rgba(45, 212, 191, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45, 212, 191, 0.08) 1px, transparent 1px);
+  background-size: 42px 42px;
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: -1;
 }
 
 #root {

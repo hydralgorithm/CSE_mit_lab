@@ -1,4 +1,4 @@
-import { readdir, rm, mkdir, copyFile, writeFile, stat, rename } from 'node:fs/promises'
+import { readdir, mkdir, copyFile, writeFile, stat, rename, readFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -10,6 +10,10 @@ export const workspaceRoot = path.resolve(projectRoot, '..')
 const outputRoot = path.join(projectRoot, 'public')
 const outputCodesRoot = path.join(outputRoot, 'codes')
 const outputIndexPath = path.join(outputRoot, 'index.json')
+const cacheRoot = path.join(projectRoot, '.cache')
+const cachePath = path.join(cacheRoot, 'index-cache.json')
+
+export const INCLUDED_ROOTS = ['SEM1', 'SEM2']
 
 export const EXCLUDED_DIRS = new Set([
   '.git',
@@ -52,6 +56,11 @@ async function walk(dirPath, collector) {
     const fullPath = path.join(dirPath, entry.name)
     const relativePath = path.relative(workspaceRoot, fullPath)
     const relativePosixPath = toPosixPath(relativePath)
+    const topLevel = relativePosixPath.split('/')[0]
+
+    if (!INCLUDED_ROOTS.includes(topLevel)) {
+      continue
+    }
 
     if (entry.isDirectory()) {
       if (EXCLUDED_DIRS.has(entry.name)) {
@@ -83,6 +92,7 @@ async function walk(dirPath, collector) {
       dir: toPosixPath(path.dirname(relativePath)),
       ext,
       size: fileStats.size,
+      mtimeMs: fileStats.mtimeMs,
       updatedAt: fileStats.mtime.toISOString(),
       absolutePath: fullPath,
     })
@@ -96,25 +106,69 @@ async function cleanOutputFolder() {
 }
 
 async function copyFiles(files) {
-  await Promise.all(
-    files.map(async (file) => {
-      const destination = path.join(outputCodesRoot, file.path)
+  const maxConcurrent = 16
+  let index = 0
+
+  async function worker() {
+    while (index < files.length) {
+      const current = files[index]
+      index += 1
+      const destination = path.join(outputCodesRoot, current.path)
       await mkdir(path.dirname(destination), { recursive: true })
-      await copyFile(file.absolutePath, destination)
-    }),
-  )
+      await copyFile(current.absolutePath, destination)
+    }
+  }
+
+  const workers = Array.from({ length: Math.min(maxConcurrent, files.length) }, () => worker())
+  await Promise.all(workers)
+}
+
+async function loadCache() {
+  try {
+    const data = await readFile(cachePath, 'utf8')
+    return JSON.parse(data)
+  } catch (error) {
+    return { files: {} }
+  }
+}
+
+async function saveCache(cache) {
+  await mkdir(cacheRoot, { recursive: true })
+  const tempPath = cachePath + '.tmp'
+  await writeFile(tempPath, JSON.stringify(cache, null, 2), 'utf8')
+  await rename(tempPath, cachePath)
 }
 
 export async function buildIndex() {
+  const cache = await loadCache()
+  const cachedFiles = cache.files || {}
   const files = []
   await walk(workspaceRoot, files)
 
   files.sort((a, b) => a.path.localeCompare(b.path))
 
   await cleanOutputFolder()
-  await copyFiles(files)
 
-  const serializableFiles = files.map(({ absolutePath, ...rest }) => rest)
+  const filesToCopy = []
+  const nextCache = { files: {} }
+
+  for (const file of files) {
+    const cached = cachedFiles[file.path]
+    const isSame = cached && cached.mtimeMs === file.mtimeMs && cached.size === file.size
+    if (!isSame) {
+      filesToCopy.push(file)
+    }
+
+    nextCache.files[file.path] = {
+      mtimeMs: file.mtimeMs,
+      size: file.size,
+    }
+  }
+
+  await copyFiles(filesToCopy)
+  await saveCache(nextCache)
+
+  const serializableFiles = files.map(({ absolutePath, mtimeMs, ...rest }) => rest)
   const payload = {
     generatedAt: new Date().toISOString(),
     totalFiles: serializableFiles.length,

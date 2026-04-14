@@ -54,6 +54,45 @@ function buildTree(files) {
   return finalize(root)
 }
 
+function scoreMatch(file, query) {
+  if (!query) {
+    return 0
+  }
+
+  const q = query.toLowerCase()
+  const path = file.path.toLowerCase()
+  const name = file.name.toLowerCase()
+
+  if (path === q) return 1000
+  if (name === q) return 950
+  if (path.endsWith(`/${q}`)) return 900
+  if (name.startsWith(q)) return 860 - name.length
+  if (path.startsWith(q)) return 820 - path.length
+  if (name.includes(q)) return 760 - name.length
+  if (path.includes(q)) return 700 - path.length
+
+  return 0
+}
+
+function pickBestMatch(files, query) {
+  if (!query) {
+    return null
+  }
+
+  let best = null
+  let bestScore = 0
+
+  for (const file of files) {
+    const score = scoreMatch(file, query)
+    if (score > bestScore) {
+      bestScore = score
+      best = file
+    }
+  }
+
+  return best
+}
+
 function TreeFolder({ folder, depth, selectedPath, onSelect }) {
   const hasSelectedChild =
     selectedPath && folder.path && selectedPath.startsWith(`${folder.path}/`)
@@ -121,6 +160,7 @@ function App() {
   const [fileContent, setFileContent] = useState('')
   const [fileError, setFileError] = useState('')
   const [fileLoading, setFileLoading] = useState(false)
+  const [copyStatus, setCopyStatus] = useState('')
 
   useEffect(() => {
     let ignore = false
@@ -165,6 +205,18 @@ function App() {
 
     return files.filter((file) => file.path.toLowerCase().includes(normalizedQuery))
   }, [files, query])
+
+  const bestMatch = useMemo(() => pickBestMatch(files, query.trim().toLowerCase()), [files, query])
+
+  useEffect(() => {
+    if (!query.trim()) {
+      return
+    }
+
+    if (bestMatch?.path && bestMatch.path !== selectedPath) {
+      setSelectedPath(bestMatch.path)
+    }
+  }, [bestMatch, query, selectedPath])
 
   useEffect(() => {
     if (filteredFiles.length === 0) {
@@ -226,6 +278,41 @@ function App() {
     }
   }, [selectedPath])
 
+  useEffect(() => {
+    if (!copyStatus) {
+      return
+    }
+
+    const timer = setTimeout(() => setCopyStatus(''), 1800)
+    return () => clearTimeout(timer)
+  }, [copyStatus])
+
+  const handleCopy = async () => {
+    if (!fileContent) {
+      return
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(fileContent)
+      } else {
+        const textarea = document.createElement('textarea')
+        textarea.value = fileContent
+        textarea.setAttribute('readonly', '')
+        textarea.style.position = 'absolute'
+        textarea.style.left = '-9999px'
+        document.body.appendChild(textarea)
+        textarea.select()
+        document.execCommand('copy')
+        textarea.remove()
+      }
+
+      setCopyStatus('copied')
+    } catch (error) {
+      setCopyStatus('failed')
+    }
+  }
+
   const selectedFile = files.find((file) => file.path === selectedPath)
   const generatedAt = indexData?.generatedAt
     ? new Date(indexData.generatedAt).toLocaleString()
@@ -234,23 +321,61 @@ function App() {
   return (
     <div className="app-shell">
       <header className="topbar">
-        <div>
+        <div className="title-block">
           <h1>CSE MIT Lab Code Portal</h1>
-          <p>{files.length} files indexed</p>
+          <p>Browse, search, and study every lab file in one place.</p>
         </div>
-        <div className="generated-at">Updated: {generatedAt || 'Loading...'}</div>
+        <div className="topbar-meta">
+          <div className="stat">
+            <span className="stat-label">Indexed</span>
+            <strong>{files.length}</strong>
+          </div>
+          <div className="stat">
+            <span className="stat-label">Updated</span>
+            <strong>{generatedAt || 'Loading...'}</strong>
+          </div>
+        </div>
       </header>
 
       <section className="content-shell">
         <aside className="sidebar">
           <label htmlFor="search">Search file or path</label>
-          <input
-            id="search"
-            type="text"
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder="ex: sem1/pr1.c"
-          />
+          <div className="search-row">
+            <input
+              id="search"
+              type="text"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' && bestMatch?.path) {
+                  setSelectedPath(bestMatch.path)
+                }
+              }}
+              placeholder="ex: sem1/pr1.c"
+              aria-describedby="search-status"
+            />
+            <button
+              type="button"
+              className="search-action"
+              onClick={() => setQuery('')}
+              disabled={!query.trim()}
+              aria-label="Clear search"
+            >
+              Clear
+            </button>
+          </div>
+
+          <div className="search-status" id="search-status">
+            {query.trim() ? (
+              <span>
+                {filteredFiles.length === 0
+                  ? 'No matches. Try a different keyword.'
+                  : `Showing ${filteredFiles.length} match${filteredFiles.length === 1 ? '' : 'es'}.`}
+              </span>
+            ) : (
+              <span>Type to jump to the closest match.</span>
+            )}
+          </div>
 
           {indexError ? <p className="error">{indexError}</p> : null}
 
@@ -291,8 +416,23 @@ function App() {
 
         <main className="viewer">
           <div className="viewer-head">
-            <strong>{selectedFile?.name || 'Select a file'}</strong>
-            <span>{selectedFile?.path || ''}</span>
+            <div>
+              <strong>{selectedFile?.name || 'Select a file'}</strong>
+              <span>{selectedFile?.path || ''}</span>
+            </div>
+            <div className="viewer-actions">
+              <button
+                type="button"
+                className="copy-button"
+                onClick={handleCopy}
+                disabled={!selectedPath || fileLoading || !fileContent}
+              >
+                {copyStatus === 'copied' ? 'Copied' : 'Copy'}
+              </button>
+              {copyStatus === 'failed' ? (
+                <span className="copy-status">Copy failed</span>
+              ) : null}
+            </div>
           </div>
 
           {fileLoading ? <p className="state">Loading file...</p> : null}
@@ -314,3 +454,5 @@ function App() {
 }
 
 export default App
+
+

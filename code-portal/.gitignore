@@ -13,6 +13,7 @@ dist-ssr
 *.local
 public/codes
 public/index.json
+.cache/
 
 # Editor directories and files
 .vscode/*
