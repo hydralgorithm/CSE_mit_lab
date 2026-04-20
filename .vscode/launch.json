@@ -3,6 +3,13 @@
   "configurations": [
     {
         "type": "java",
+        "name": "ExcDemo8",
+        "request": "launch",
+        "mainClass": "ExcDemo8",
+        "projectName": "CSE_mit_lab_5c29eb61"
+    },
+    {
+        "type": "java",
         "name": "ExcExer2",
         "request": "launch",
         "mainClass": "ExcExer2",
