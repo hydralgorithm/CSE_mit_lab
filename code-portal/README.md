@@ -76,3 +76,6 @@ For continuous updates on the live site:
 4. New files appear on website after deployment
 
 Note: The live Vercel site cannot update from your local machine instantly without a new deploy. Auto update happens on each push/deploy.
+
+
+gonna upd iter 1

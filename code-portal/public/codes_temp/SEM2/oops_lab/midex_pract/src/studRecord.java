@@ -22,7 +22,7 @@ public class studRecord {
         System.out.println("Enter no. of students: ");
         int numOfStud = sc.nextInt();
         sc.nextLine();
-        Student[] students = new Student[numOfStud];
+        Students[] students = new Students[numOfStud];
 
         for(int i=0; i<numOfStud;i++){
             System.out.println("Enter Stud "+(i+1)+" Details:");
@@ -33,7 +33,7 @@ public class studRecord {
             System.out.print("Stud Marks: ");
             double m = sc.nextDouble();
             sc.nextLine();
-            students[i] = new Student(n, r, m);
+            students[i] = new Students(n, r, m);
         }
         sc.close();
         System.out.println("Display records:");
@@ -43,7 +43,7 @@ public class studRecord {
         //     System.out.println("Roll no: "+students[i].rollno);
         //     System.out.println("Marks: "+students[i].marks);
         // }
-        for(Student s: students){
+        for(Students s: students){
             s.display();;
         }
     }
