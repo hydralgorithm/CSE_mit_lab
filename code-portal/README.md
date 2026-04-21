@@ -78,4 +78,4 @@ For continuous updates on the live site:
 Note: The live Vercel site cannot update from your local machine instantly without a new deploy. Auto update happens on each push/deploy.
 
 
-gonna upd iter 2
+gonna upd iter 3
