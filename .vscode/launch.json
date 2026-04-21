@@ -3,6 +3,20 @@
   "configurations": [
     {
         "type": "java",
+        "name": "TrainTicket",
+        "request": "launch",
+        "mainClass": "TrainTicket",
+        "projectName": "CSE_mit_lab_5c29eb61"
+    },
+    {
+        "type": "java",
+        "name": "pyq1",
+        "request": "launch",
+        "mainClass": "pyq1",
+        "projectName": "CSE_mit_lab_5c29eb61"
+    },
+    {
+        "type": "java",
         "name": "lab8_3",
         "request": "launch",
         "mainClass": "lab8_3",
