@@ -3,6 +3,27 @@
   "configurations": [
     {
         "type": "java",
+        "name": "pract6_3",
+        "request": "launch",
+        "mainClass": "pract6_3",
+        "projectName": "CSE_mit_lab_5c29eb61"
+    },
+    {
+        "type": "java",
+        "name": "pract6_2",
+        "request": "launch",
+        "mainClass": "pract6_2",
+        "projectName": "CSE_mit_lab_5c29eb61"
+    },
+    {
+        "type": "java",
+        "name": "pract6_1",
+        "request": "launch",
+        "mainClass": "pract6_1",
+        "projectName": "CSE_mit_lab_5c29eb61"
+    },
+    {
+        "type": "java",
         "name": "TrainTicket",
         "request": "launch",
         "mainClass": "TrainTicket",
