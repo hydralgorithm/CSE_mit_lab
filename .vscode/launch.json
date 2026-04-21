@@ -3,6 +3,13 @@
   "configurations": [
     {
         "type": "java",
+        "name": "lab7_1",
+        "request": "launch",
+        "mainClass": "lab7_1",
+        "projectName": "CSE_mit_lab_5c29eb61"
+    },
+    {
+        "type": "java",
         "name": "lab10_3",
         "request": "launch",
         "mainClass": "lab10_3",
