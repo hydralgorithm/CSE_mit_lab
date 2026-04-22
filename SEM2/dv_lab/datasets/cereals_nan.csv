@@ -1,0 +1,11 @@
+name,calories,protein,fat,sodium,fiber,carbohydrates,sugars,vitamins
+Corn Flakes,100,2.0,0.0,200.0,1.0,22.0,9.0,25.0
+Frosted Flakes,110,2.0,0.0,210.0,1.0,23.0,,25.0
+Cheerios,120,3.0,2.0,180.0,2.0,21.0,6.0,25.0
+Rice Krispies,90,2.0,0.0,220.0,1.0,24.0,8.0,25.0
+Special K,110,6.0,1.0,230.0,3.0,20.0,5.0,25.0
+Cocoa Puffs,120,1.0,1.0,250.0,1.0,25.0,15.0,25.0
+Fruit Loops,130,2.0,1.0,240.0,2.0,23.0,12.0,25.0
+Shredded Wheat,100,3.0,1.0,,3.0,22.0,7.0,25.0
+Honey Nut Cheerios,110,3.0,2.0,210.0,2.0,21.0,10.0,
+Raisin Bran,130,4.0,2.0,220.0,4.0,26.0,14.0,25.0
