@@ -3,6 +3,34 @@
   "configurations": [
     {
         "type": "java",
+        "name": "loanProcess",
+        "request": "launch",
+        "mainClass": "loanProcess",
+        "projectName": "CSE_mit_lab_5c29eb61"
+    },
+    {
+        "type": "java",
+        "name": "MovieStream",
+        "request": "launch",
+        "mainClass": "MovieStream",
+        "projectName": "CSE_mit_lab_5c29eb61"
+    },
+    {
+        "type": "java",
+        "name": "smartNotif",
+        "request": "launch",
+        "mainClass": "smartNotif",
+        "projectName": "CSE_mit_lab_5c29eb61"
+    },
+    {
+        "type": "java",
+        "name": "exersome",
+        "request": "launch",
+        "mainClass": "exersome",
+        "projectName": "CSE_mit_lab_5c29eb61"
+    },
+    {
+        "type": "java",
         "name": "pract5_2",
         "request": "launch",
         "mainClass": "pract5_2",
