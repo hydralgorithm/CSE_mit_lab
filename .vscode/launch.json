@@ -3,6 +3,27 @@
   "configurations": [
     {
         "type": "java",
+        "name": "pract5_2",
+        "request": "launch",
+        "mainClass": "pract5_2",
+        "projectName": "CSE_mit_lab_5c29eb61"
+    },
+    {
+        "type": "java",
+        "name": "pract5_1",
+        "request": "launch",
+        "mainClass": "pract5_1",
+        "projectName": "CSE_mit_lab_5c29eb61"
+    },
+    {
+        "type": "java",
+        "name": "lab5_1self",
+        "request": "launch",
+        "mainClass": "lab5_1self",
+        "projectName": "CSE_mit_lab_5c29eb61"
+    },
+    {
+        "type": "java",
         "name": "pract6_3",
         "request": "launch",
         "mainClass": "pract6_3",
