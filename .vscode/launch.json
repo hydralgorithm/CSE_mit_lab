@@ -3,6 +3,48 @@
   "configurations": [
     {
         "type": "java",
+        "name": "fin4re",
+        "request": "launch",
+        "mainClass": "SEM2.oops_lab.endsemfin.fin4re",
+        "projectName": "CSE_mit_lab_5c29eb61"
+    },
+    {
+        "type": "java",
+        "name": "fin4",
+        "request": "launch",
+        "mainClass": "SEM2.oops_lab.endsemfin.fin4",
+        "projectName": "CSE_mit_lab_5c29eb61"
+    },
+    {
+        "type": "java",
+        "name": "fin3",
+        "request": "launch",
+        "mainClass": "SEM2.oops_lab.endsemfin.fin3",
+        "projectName": "CSE_mit_lab_5c29eb61"
+    },
+    {
+        "type": "java",
+        "name": "fin2",
+        "request": "launch",
+        "mainClass": "SEM2.oops_lab.endsemfin.fin2",
+        "projectName": "CSE_mit_lab_5c29eb61"
+    },
+    {
+        "type": "java",
+        "name": "fin1re",
+        "request": "launch",
+        "mainClass": "SEM2.oops_lab.endsemfin.fin1re",
+        "projectName": "CSE_mit_lab_5c29eb61"
+    },
+    {
+        "type": "java",
+        "name": "fin1",
+        "request": "launch",
+        "mainClass": "SEM2.oops_lab.endsemfin.fin1",
+        "projectName": "CSE_mit_lab_5c29eb61"
+    },
+    {
+        "type": "java",
         "name": "loanProcess",
         "request": "launch",
         "mainClass": "loanProcess",
