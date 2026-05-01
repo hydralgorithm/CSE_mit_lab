@@ -3,6 +3,62 @@
   "configurations": [
     {
         "type": "java",
+        "name": "fin11",
+        "request": "launch",
+        "mainClass": "SEM2.oops_lab.endsemfin.fin11",
+        "projectName": "CSE_mit_lab_5c29eb61"
+    },
+    {
+        "type": "java",
+        "name": "fin10",
+        "request": "launch",
+        "mainClass": "SEM2.oops_lab.endsemfin.fin10",
+        "projectName": "CSE_mit_lab_5c29eb61"
+    },
+    {
+        "type": "java",
+        "name": "fin9",
+        "request": "launch",
+        "mainClass": "SEM2.oops_lab.endsemfin.fin9",
+        "projectName": "CSE_mit_lab_5c29eb61"
+    },
+    {
+        "type": "java",
+        "name": "fin8",
+        "request": "launch",
+        "mainClass": "SEM2.oops_lab.endsemfin.fin8",
+        "projectName": "CSE_mit_lab_5c29eb61"
+    },
+    {
+        "type": "java",
+        "name": "B",
+        "request": "launch",
+        "mainClass": "SEM2.oops_lab.endsemfin.com.P1.B",
+        "projectName": "CSE_mit_lab_5c29eb61"
+    },
+    {
+        "type": "java",
+        "name": "fin7",
+        "request": "launch",
+        "mainClass": "SEM2.oops_lab.endsemfin.fin7",
+        "projectName": "CSE_mit_lab_5c29eb61"
+    },
+    {
+        "type": "java",
+        "name": "fin6",
+        "request": "launch",
+        "mainClass": "SEM2.oops_lab.endsemfin.fin6",
+        "projectName": "CSE_mit_lab_5c29eb61"
+    },
+    {
+        "type": "java",
+        "name": "fin5",
+        "request": "launch",
+        "mainClass": "SEM2.oops_lab.endsemfin.fin5",
+        "projectName": "CSE_mit_lab_5c29eb61"
+    },
+    {
+        "type": "java",
         "name": "fin4re",
         "request": "launch",
         "mainClass": "SEM2.oops_lab.endsemfin.fin4re",
