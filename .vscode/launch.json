@@ -3,6 +3,41 @@
   "configurations": [
     {
         "type": "java",
+        "name": "fin16",
+        "request": "launch",
+        "mainClass": "SEM2.oops_lab.endsemfin.myPackages.fin16",
+        "projectName": "CSE_mit_lab_5c29eb61"
+    },
+    {
+        "type": "java",
+        "name": "fin15",
+        "request": "launch",
+        "mainClass": "SEM2.oops_lab.endsemfin.fin15",
+        "projectName": "CSE_mit_lab_5c29eb61"
+    },
+    {
+        "type": "java",
+        "name": "fin14",
+        "request": "launch",
+        "mainClass": "SEM2.oops_lab.endsemfin.fin14",
+        "projectName": "CSE_mit_lab_5c29eb61"
+    },
+    {
+        "type": "java",
+        "name": "fin13",
+        "request": "launch",
+        "mainClass": "SEM2.oops_lab.endsemfin.fin13",
+        "projectName": "CSE_mit_lab_5c29eb61"
+    },
+    {
+        "type": "java",
+        "name": "fin12",
+        "request": "launch",
+        "mainClass": "SEM2.oops_lab.endsemfin.fin12",
+        "projectName": "CSE_mit_lab_5c29eb61"
+    },
+    {
+        "type": "java",
         "name": "fin11",
         "request": "launch",
         "mainClass": "SEM2.oops_lab.endsemfin.fin11",
