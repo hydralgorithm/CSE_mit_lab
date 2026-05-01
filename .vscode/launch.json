@@ -3,6 +3,13 @@
   "configurations": [
     {
         "type": "java",
+        "name": "bigfin25",
+        "request": "launch",
+        "mainClass": "SEM2.oops_lab.endsemfin.bigfin25",
+        "projectName": "CSE_mit_lab_5c29eb61"
+    },
+    {
+        "type": "java",
         "name": "shapeDemo",
         "request": "launch",
         "mainClass": "SEM2.oops_lab.endsemfin.edu.mit.shapeDemo",
