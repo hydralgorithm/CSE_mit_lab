@@ -119,7 +119,7 @@ Key folders:
 - `src/` (frontend application: `App.jsx`, `FileViewer.jsx`, `main.jsx`, CSS)
 - `scripts/` (`build-index.mjs`, `watch-index.mjs`)
 - `public/index.json` (generated searchable index)
-- `public/codes/` and `public/codes_temp/` (mirrored code trees used by the viewer)
+- `public/codes/` (mirrored code tree used by the viewer)
 
 Directory stats:
 
@@ -127,7 +127,6 @@ Directory stats:
 - `scripts/`: 2 files
 - `public/`: 530 files
 - `public/codes/`: 265 files
-- `public/codes_temp/`: 262 files
 - `node_modules/`: 13,246 files
 
 Build/config files:
