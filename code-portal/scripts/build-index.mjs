@@ -1,4 +1,4 @@
-import { readdir, mkdir, copyFile, writeFile, stat, rename, readFile } from 'node:fs/promises'
+import { readdir, mkdir, copyFile, writeFile, stat, rename, readFile, rm } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import ignore from 'ignore'
@@ -45,6 +45,13 @@ const INCLUDED_EXTENSIONS = new Set([
   '.json',
   '.ipynb',
   '.md',
+  '.png',
+  '.jpg',
+  '.jpeg',
+  '.gif',
+  '.webp',
+  '.bmp',
+  '.svg',
 ])
 
 function toPosixPath(value) {
@@ -122,10 +129,41 @@ async function walk(dirPath, collector, ig) {
   }
 }
 
-async function cleanOutputFolder() {
-  // We no longer nuke the directory to avoid Vite watch locks on Windows (EPERM).
-  // Stale files will be ignored by index.json, but physically cleaning them is omitted here
-  // for simplicity/robustness in dev. For production, `npm run build` is enough.
+async function pruneOutputFolder(validPaths) {
+  async function pruneDir(currentDir) {
+    const entries = await readdir(currentDir, { withFileTypes: true })
+
+    for (const entry of entries) {
+      const fullPath = path.join(currentDir, entry.name)
+
+      if (entry.isDirectory()) {
+        await pruneDir(fullPath)
+
+        const remaining = await readdir(fullPath)
+        if (remaining.length === 0) {
+          await rm(fullPath, { recursive: true, force: true })
+        }
+        continue
+      }
+
+      if (!entry.isFile()) {
+        continue
+      }
+
+      const relativePath = toPosixPath(path.relative(outputCodesRoot, fullPath))
+      if (!validPaths.has(relativePath)) {
+        await rm(fullPath, { recursive: true, force: true })
+      }
+    }
+  }
+
+  try {
+    await pruneDir(outputCodesRoot)
+  } catch (error) {
+    if (error?.code !== 'ENOENT') {
+      throw error
+    }
+  }
 }
 
 async function copyFiles(files) {
@@ -171,8 +209,6 @@ export async function buildIndex() {
 
   files.sort((a, b) => a.path.localeCompare(b.path))
 
-  await cleanOutputFolder()
-
   const filesToCopy = []
   const nextCache = { files: {} }
 
@@ -190,6 +226,8 @@ export async function buildIndex() {
   }
 
   await copyFiles(filesToCopy)
+  const validPaths = new Set(files.map((file) => file.path))
+  await pruneOutputFolder(validPaths)
   await saveCache(nextCache)
 
   const serializableFiles = files.map(({ absolutePath, mtimeMs, ...rest }) => rest)

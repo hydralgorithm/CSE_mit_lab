@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import { FileViewer } from '../FileViewer'
 
+const IMAGE_EXTENSIONS = new Set(['.png', '.jpg', '.jpeg', '.gif', '.webp', '.bmp', '.svg'])
+
 function makeFileUrl(relativePath) {
   return `/codes/${relativePath
     .split('/')
@@ -193,6 +195,7 @@ export default function Portal() {
   }, [])
 
   const files = indexData?.files ?? []
+  const selectedFile = useMemo(() => files.find((file) => file.path === selectedPath), [files, selectedPath])
 
   const filteredFiles = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase()
@@ -226,6 +229,16 @@ export default function Portal() {
   useEffect(() => {
     if (!selectedPath) {
       setFileContent('')
+      setFileError('')
+      setFileLoading(false)
+      return
+    }
+
+    const selectedExt = selectedFile?.ext?.toLowerCase()
+    if (selectedExt && IMAGE_EXTENSIONS.has(selectedExt)) {
+      setFileContent('')
+      setFileError('')
+      setFileLoading(false)
       return
     }
 
@@ -267,7 +280,7 @@ export default function Portal() {
     return () => {
       ignore = true
     }
-  }, [selectedPath])
+  }, [selectedPath, selectedFile])
 
   useEffect(() => {
     if (!copyStatus) {
@@ -304,7 +317,6 @@ export default function Portal() {
     }
   }
 
-  const selectedFile = files.find((file) => file.path === selectedPath)
   const generatedAt = indexData?.generatedAt
     ? new Date(indexData.generatedAt).toLocaleString()
     : ''
@@ -444,7 +456,11 @@ export default function Portal() {
 
             {!fileLoading && !fileError && selectedPath ? (
               <div className="file-content-container">
-                <FileViewer file={selectedFile} content={fileContent} />
+                <FileViewer
+                  file={selectedFile}
+                  content={fileContent}
+                  fileUrl={selectedFile ? makeFileUrl(selectedFile.path) : ''}
+                />
               </div>
             ) : null}
 

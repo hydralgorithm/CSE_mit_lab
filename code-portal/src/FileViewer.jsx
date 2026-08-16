@@ -1,8 +1,37 @@
-import { useMemo } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+
+const IMAGE_EXTENSIONS = new Set(['.png', '.jpg', '.jpeg', '.gif', '.webp', '.bmp', '.svg'])
+
+function getOutputDataValue(value) {
+  if (Array.isArray(value)) {
+    return value.join('')
+  }
+
+  return typeof value === 'string' ? value : ''
+}
+
+function renderNotebookImage(output, index) {
+  const imagePng = getOutputDataValue(output?.data?.['image/png'])
+  if (imagePng) {
+    return <img key={index} className="notebook-output-image" src={`data:image/png;base64,${imagePng}`} alt="Notebook output" />
+  }
+
+  const imageJpeg = getOutputDataValue(output?.data?.['image/jpeg'])
+  if (imageJpeg) {
+    return <img key={index} className="notebook-output-image" src={`data:image/jpeg;base64,${imageJpeg}`} alt="Notebook output" />
+  }
+
+  const imageSvg = getOutputDataValue(output?.data?.['image/svg+xml'])
+  if (imageSvg) {
+    const encodedSvg = encodeURIComponent(imageSvg)
+    return <img key={index} className="notebook-output-image" src={`data:image/svg+xml;utf8,${encodedSvg}`} alt="Notebook output" />
+  }
+
+  return null
+}
 
 function getLanguageFromExt(ext) {
   switch (ext) {
@@ -34,9 +63,17 @@ function getLanguageFromExt(ext) {
   }
 }
 
-export function FileViewer({ file, content }) {
+export function FileViewer({ file, content, fileUrl }) {
   const ext = file?.ext?.toLowerCase()
   const isLargeFile = typeof file?.size === 'number' && file.size > 200000
+
+  if (ext && IMAGE_EXTENSIONS.has(ext) && fileUrl) {
+    return (
+      <div className="image-viewer">
+        <img className="file-image" src={fileUrl} alt={file?.name || 'Image file'} loading="lazy" />
+      </div>
+    )
+  }
 
   if (ext === '.md') {
     return (
@@ -83,6 +120,11 @@ export function FileViewer({ file, content }) {
                 {cell.outputs && cell.outputs.length > 0 && (
                   <div className="cell-outputs">
                     {cell.outputs.map((out, outIndex) => {
+                      const renderedImage = renderNotebookImage(out, outIndex)
+                      if (renderedImage) {
+                        return renderedImage
+                      }
+
                       if (out.output_type === 'stream') {
                         const outText = Array.isArray(out.text) ? out.text.join('') : out.text
                         return <pre key={outIndex} className="output-stream">{outText}</pre>

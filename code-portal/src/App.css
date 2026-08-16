@@ -744,6 +744,27 @@
   overflow: hidden;
 }
 
+.image-viewer {
+  flex: 0 0 auto;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.file-image {
+  display: block;
+  max-width: 100%;
+  max-height: 75vh;
+  width: auto;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+}
+
 .large-file {
   margin: 0;
   padding: 20px;
@@ -824,6 +845,16 @@
   font-size: 0.85rem;
   white-space: pre-wrap;
   word-break: break-word;
+}
+
+.notebook-output-image {
+  display: block;
+  max-width: 100%;
+  max-height: 60vh;
+  width: auto;
+  height: auto;
+  border-radius: 8px;
+  margin: 8px 0;
 }
 
 /* Markdown File Viewer */
