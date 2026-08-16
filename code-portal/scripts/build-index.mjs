@@ -15,7 +15,7 @@ const cacheRoot = path.join(projectRoot, '.cache')
 const cachePath = path.join(cacheRoot, 'index-cache.json')
 const ignoreFilePath = path.join(workspaceRoot, '.code-portalignore')
 
-export const INCLUDED_ROOTS = ['SEM1', 'SEM2']
+export const INCLUDED_ROOTS = ['SEM1', 'SEM2', 'SEM3']
 
 export const EXCLUDED_DIRS = new Set([
   '.git',
