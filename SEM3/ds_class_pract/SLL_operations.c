@@ -127,6 +127,42 @@ void random_delete(){
         }
     }
 }
+void reverse_list(){
+    struct Node *prev = NULL;
+    struct Node *curn = head;
+    struct Node *ptr = NULL;
+    while(curn!=NULL){
+        ptr = curn->next;
+        curn->next = prev;
+        prev = curn;
+        curn = ptr;
+    }
+    head = prev;
+}
+void search(){
+    struct Node *temp;
+    int item, i=1, found =0;
+    temp = head;
+    if(temp == NULL){
+        printf("Empty list!");
+        return;
+    }
+    printf("Enter item u wanna search: ");
+    scanf("%d", &item);
+    while(temp != NULL){
+        if(temp->info == item){
+            printf("Item found at position %d\n", i);
+            found = 1;
+            break;
+        }
+        temp = temp->next;
+        i++;
+    }
+    if(found == 0){
+        printf("Item not found!\n");
+    }
+}
+
 void display(){
     struct Node *curn;
     if(head == NULL){
@@ -147,8 +183,10 @@ int main(){
         printf("4.Delete front\n");
         printf("5.Delete rear\n");
         printf("6.Delete custom\n");
-        printf("7.Display\n");
-        printf("8.Exit\n");
+        printf("7.Reverse\n");
+        printf("8.Search element\n");
+        printf("9.Display\n");
+        printf("10.Exit\n");
         printf("Enter choice: ");
         int ch;
         scanf("%d",&ch);
@@ -172,9 +210,15 @@ int main(){
                 random_delete();
                 break;
             case 7:
-                display();
+                reverse_list();
                 break;
             case 8:
+                search();
+                break;
+            case 9:
+                display();
+                break;
+            case 10:
                 printf("exiting...");
                 return 0;
             default:
