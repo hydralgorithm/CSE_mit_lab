@@ -6,7 +6,7 @@ struct Queue{
 };
 void init(struct Queue *q){
     q->rear = q->front = -1;
-};
+}
 void enqueue(struct Queue *q, int data){
     if(q->rear==MAX-1){
         printf("FULL!\n");
