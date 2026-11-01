@@ -1,65 +1,32 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct node {
+typedef struct node {
     int data;
     struct node *prev, *next;
-};
+} *Nodeptr;
 
-typedef struct node *Nodeptr;
-
-// Global head
 Nodeptr head = NULL;
+Nodeptr original, even, odd, sorted, third;
 
-// Saved list pointers
-Nodeptr original = NULL, even = NULL, odd = NULL;
-Nodeptr third = NULL, sorted = NULL, result = NULL;
+void insert(int x) {
+    Nodeptr p = (Nodeptr)malloc(sizeof(struct node));
+    p->data = x;
+    p->next = NULL;
+    p->prev = NULL;
 
-Nodeptr newNode(int x) {
-    Nodeptr temp = malloc(sizeof(struct node));
-    if (temp == NULL) exit(1);
-
-    temp->data = x;
-    temp->prev = temp->next = NULL;
-    return temp;
-}
-
-void append(int x) {
-    Nodeptr temp = newNode(x);
-
-    if (head == NULL) {
-        head = temp;
-        return;
-    }
-
-    Nodeptr p = head;
-    while (p->next != NULL)
-        p = p->next;
-
-    p->next = temp;
-    temp->prev = p;
-}
-
-void readList() {
-    int n, x;
-
-    printf("Enter number of elements: ");
-    scanf("%d", &n);
-
-    for (int i = 0; i < n; i++) {
-        scanf("%d", &x);
-        append(x);
+    if (head == NULL)
+        head = p;
+    else {
+        Nodeptr t = head;
+        while (t->next != NULL)
+            t = t->next;
+        t->next = p;
+        p->prev = t;
     }
 }
 
-void display() {
-    Nodeptr p = head;
-
-    if (p == NULL) {
-        printf("Empty list\n");
-        return;
-    }
-
+void display(Nodeptr p) {
     while (p != NULL) {
         printf("%d ", p->data);
         p = p->next;
@@ -68,44 +35,84 @@ void display() {
 }
 
 void sort() {
-    if (head == NULL) return;
+    Nodeptr i, j;
+    int temp;
 
-    int swapped;
-    Nodeptr p;
-
-    do {
-        swapped = 0;
-        p = head;
-
-        while (p->next != NULL) {
-            if (p->data > p->next->data) {
-                int t = p->data;
-                p->data = p->next->data;
-                p->next->data = t;
-                swapped = 1;
+    for (i = head; i != NULL; i = i->next)
+        for (j = i->next; j != NULL; j = j->next)
+            if (i->data > j->data) {
+                temp = i->data;
+                i->data = j->data;
+                j->data = temp;
             }
-            p = p->next;
-        }
-    } while (swapped);
 }
 
-void separate() {
-    Nodeptr p = original;
+void removeDuplicates() {
+    Nodeptr p = head, q;
 
-    even = odd = NULL;
+    while (p != NULL && p->next != NULL) {
+        if (p->data == p->next->data) {
+            q = p->next;
+            p->next = q->next;
+            if (q->next != NULL)
+                q->next->prev = p;
+            free(q);
+        } else
+            p = p->next;
+    }
+}
+
+void deleteAlternate() {
+    Nodeptr p = head, q;
+
+    while (p != NULL && p->next != NULL) {
+        q = p->next;
+        p->next = q->next;
+
+        if (q->next != NULL)
+            q->next->prev = p;
+
+        free(q);
+        p = p->next;
+    }
+}
+
+int main() {
+    int n, x, i;
+    Nodeptr p;
+
+    // Original list
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter elements: ");
+    for (i = 0; i < n; i++) {
+        scanf("%d", &x);
+        insert(x);
+    }
+
+    original = head;
+    printf("Original list: ");
+    display(original);
+
+    // Separate even and odd elements
+    head = NULL;
+    p = original;
 
     while (p != NULL) {
-        head = (p->data % 2 == 0) ? even : odd;
-        append(p->data);
-
-        if (p->data % 2 == 0)
+        if (p->data % 2 == 0) {
+            head = even;
+            insert(p->data);
             even = head;
-        else
+        } else {
+            head = odd;
+            insert(p->data);
             odd = head;
-
+        }
         p = p->next;
     }
 
+    // Sort even and odd lists
     head = even;
     sort();
     even = head;
@@ -113,130 +120,68 @@ void separate() {
     head = odd;
     sort();
     odd = head;
-}
 
-void merge() {
-    Nodeptr a = even, b = odd;
+    printf("Even list: ");
+    display(even);
+
+    printf("Odd list: ");
+    display(odd);
+
+    // Combine both sorted lists
     head = NULL;
 
-    while (a != NULL && b != NULL) {
-        if (a->data < b->data) {
-            append(a->data);
-            a = a->next;
-        } else {
-            append(b->data);
-            b = b->next;
-        }
-    }
-
-    while (a != NULL) {
-        append(a->data);
-        a = a->next;
-    }
-
-    while (b != NULL) {
-        append(b->data);
-        b = b->next;
-    }
-
-    sorted = head;
-}
-
-void unionList() {
-    Nodeptr a = sorted, b = third;
-    head = NULL;
-
-    while (a != NULL && b != NULL) {
-        int x;
-
-        if (a->data < b->data) {
-            x = a->data;
-            a = a->next;
-        } else if (a->data > b->data) {
-            x = b->data;
-            b = b->next;
-        } else {
-            x = a->data;
-            a = a->next;
-            b = b->next;
-        }
-
-        if (head == NULL || head->prev->data != x)
-            append(x);
-    }
-
-    while (a != NULL) {
-        int x = a->data;
-        if (head == NULL || head->prev->data != x)
-            append(x);
-        a = a->next;
-    }
-
-    while (b != NULL) {
-        int x = b->data;
-        if (head == NULL || head->prev->data != x)
-            append(x);
-        b = b->next;
-    }
-
-    result = head;
-}
-
-void deleteAlternate() {
-    Nodeptr p = head;
-
-    while (p != NULL && p->next != NULL) {
-        Nodeptr temp = p->next;
-        p->next = temp->next;
-
-        if (temp->next != NULL)
-            temp->next->prev = p;
-
-        free(temp);
+    p = even;
+    while (p != NULL) {
+        insert(p->data);
         p = p->next;
     }
-}
 
-int main() {
-    printf("Enter original list:\n");
-    readList();
-    original = head;
+    p = odd;
+    while (p != NULL) {
+        insert(p->data);
+        p = p->next;
+    }
 
-    printf("Original list: ");
-    display();
-
-    separate();
-
-    head = even;
-    printf("Even list: ");
-    display();
-
-    head = odd;
-    printf("Odd list: ");
-    display();
-
-    merge();
-    head = sorted;
-    printf("Combined sorted list: ");
-    display();
-
-    head = NULL;
-    printf("\nEnter third list:\n");
-    readList();
     sort();
+    sorted = head;
+
+    printf("Sorted list: ");
+    display(sorted);
+
+    // Read third list
+    head = NULL;
+
+    printf("Enter number of elements in third list: ");
+    scanf("%d", &n);
+
+    printf("Enter elements: ");
+    for (i = 0; i < n; i++) {
+        scanf("%d", &x);
+        insert(x);
+    }
+
     third = head;
 
-    printf("Third list: ");
-    display();
+    // Union of sorted and third list
+    head = sorted;
 
-    unionList();
-    head = result;
+    p = third;
+    while (p != NULL) {
+        insert(p->data);
+        p = p->next;
+    }
+
+    sort();
+    removeDuplicates();
+
     printf("Union: ");
-    display();
+    display(head);
 
+    // Delete alternate nodes
     deleteAlternate();
+
     printf("After deleting alternate nodes: ");
-    display();
+    display(head);
 
     return 0;
 }
