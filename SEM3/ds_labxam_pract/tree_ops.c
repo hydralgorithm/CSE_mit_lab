@@ -44,6 +44,50 @@ void postorder(Nodeptr t){
     postorder(t->rchild);
     printf("%d ",t->data);
 }
+void levelOrder(Nodeptr root){
+    Nodeptr q[100];
+    int f=0, r=0;
+    if(root==NULL)
+        return;
+    q[r++] = root;
+    while(f<r){
+        Nodeptr t = q[f++];
+        printf("%d ",t->data);
+        if(t->lchild) q[r++] = t->lchild;
+        if(t->rchild) q[r++] = t->rchild;
+    }
+}
+int height(Nodeptr t){
+    if(t==NULL) return 0;
+    int l=height(t->lchild), r=height(t->rchild);
+    return ((l>r)?l:r)+1;
+}
+int count(Nodeptr t){
+    if(t==NULL) return 0;
+    return 1+count(t->lchild)+count(t->rchild);
+}
+int leaves(Nodeptr t){
+    if(t==NULL) return 0;
+    if(t->lchild ==NULL && t->rchild==NULL) return 1;
+    return leaves(t->lchild)+leaves(t->rchild);
+}
+int search(Nodeptr t,int key){
+    if(t==NULL) return 0;
+    if(t->data==key) return 1;
+    return search(t->lchild,key) || search(t->rchild,key);
+}
+Nodeptr copy(Nodeptr t){
+    if(t==NULL) return NULL;
+    Nodeptr c = getNode(t->data);
+    c->lchild = copy(t->lchild);
+    c->rchild = copy(t->rchild);
+    return c;
+}
+int equal(Nodeptr a, Nodeptr b){
+    if(a==NULL && b==NULL) return 1;
+    if(a==NULL || b==NULL) return 0;
+    return a->data==b->data && equal(a->lchild,b->lchild) && equal(a->rchild,b->rchild);
+}
 int main(){
     Nodeptr root = getNode(10);
     insert(root,"L",20);
@@ -56,5 +100,6 @@ int main(){
     inorder(root);
     preorder(root);
     postorder(root);
+    levelOrder(root);
     return 0;
 }
