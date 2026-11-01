@@ -57,7 +57,7 @@ int main(){
     insert(root,30);
     insert(root,27);
     inorder(root);
-    delete_node(root,30);
+    root = delete_node(root,30);
     inorder(root);
     return 0;
 }
