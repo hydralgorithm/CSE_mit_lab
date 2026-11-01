@@ -132,4 +132,4 @@ int main() {
     printf("\nCopy equal to original: %d", are_equal(root, dup));
     printf("\nCopy is mirror of original: %d\n", are_mirror(root, dup));
     return 0;
-}
+}   
